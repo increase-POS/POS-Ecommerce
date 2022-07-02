@@ -1,0 +1,27 @@
+﻿@using PosEcommerce.Models;
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Item detail</h2>
+Item:@ViewBag.item.name;
+<br />
+Category:@ViewBag.item.categoryName;
+<div>
+
+    @if (ViewBag.item.image != "" && ViewBag.item.image != null)
+    {
+
+        <img src="@Url.Content(Global.APIUriserver+"images/item/"+ ViewBag.item.image.ToString())" alt="" class="img-thumbnail text-center">
+        @*<img src="@Url.Content(Global.CategoryFolder+"/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">*@
+
+    }
+    else
+    {
+
+        <img src="@Url.Content(Global.CategoryFolder+"/default.png")" alt="" class="img-thumbnail text-center">
+        @*<img src="@Url.Content(Global.CategoryFolder+"/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">*@
+
+    }
+
+</div>

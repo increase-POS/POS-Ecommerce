@@ -1,0 +1,22 @@
+﻿@using PosEcommerce.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var row in ViewBag.categoryList)
+{
+    @row.name;
+    <br />
+    <div  >
+        @if (row.image!=""||row.image!=null)
+        {
+          
+            <img src="@Url.Content(Global.CategoryFolder+"/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">
+        }
+       
+    </div>
+    <br />
+}

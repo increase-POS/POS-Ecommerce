@@ -1,0 +1,77 @@
+﻿@using PosEcommerce.Models;
+
+@{
+    ViewBag.Title = "Category";
+}
+<div style="text-align:left">
+    @foreach (var row in ViewBag.catPathList)
+    {
+        <a href="@Url.Action("Index", "Category",new { catId = @row.categoryId})">@row.name</a>
+        <p><text dir="ltr">-></text></p>
+    }
+</div>
+<br />
+<h2>Category</h2>
+
+@foreach (var row in ViewBag.categoryList)
+{
+    @row.name <text>-id=</text> @row.categoryId
+    <br />
+
+    <div>
+
+        @if (row.image != "" && row.image != null)
+        {
+            <a href="@Url.Action("Index", "Category",new { catId = @row.categoryId})  ">
+                <img src="@Url.Content(Global.APIUriserver+"images/category/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">
+                @*<img src="@Url.Content(Global.CategoryFolder+"/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">*@
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("Index", "Category",new { catId = @row.categoryId})  ">
+                <img src="@Url.Content( Global.Categorypath+"default.png")" alt="" class="img-thumbnail text-center">
+                @*<img src="@Url.Content(System.Web.Hosting.HostingEnvironment.MapPath("\\images\\category\\")+"default.png")" alt="" class="img-thumbnail text-center">*@
+                @*<img src="@Url.Content(Global.CategoryFolder+"/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">*@
+            </a>
+        }
+
+    </div>
+    <br />
+}
+
+
+
+<h2>Item</h2>
+@foreach (var rowitem in ViewBag.itemList)
+{
+    @rowitem.name; <text>-New=</text> @rowitem.isNew; <text>-Offer=</text>@rowitem.isOffer;
+    <h2>Unit</h2>
+    <br />
+    <div style="text-align:left">
+        @foreach (var rowunit in @rowitem.ItemUnitList)
+        {
+            @rowunit.unitName;<text>-Price=</text>@rowunit.price <text>-Offer=</text> @rowunit.offerName;
+
+        }
+    </div>
+    <div>
+
+        @if (rowitem.image != "" && rowitem.image != null)
+        {
+            <a href="@Url.Action("Index", "Item",new { itemId = rowitem.itemId})  ">
+                <img src="@Url.Content(Global.APIUriserver+"images/item/"+ rowitem.image.ToString())" alt="" class="img-thumbnail text-center">
+                @*<img src="@Url.Content(Global.CategoryFolder+"/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">*@
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("Index", "Item",new { itemId =rowitem.itemId})  ">
+                <img src="@Url.Content( Global.Categorypath+"default.png")" alt="" class="img-thumbnail text-center">
+                @*<img src="@Url.Content(Global.CategoryFolder+"/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">*@
+            </a>
+        }
+
+    </div>
+    <br />
+}
