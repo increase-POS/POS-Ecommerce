@@ -11,11 +11,14 @@ namespace PosEcommerce.Controllers
     public class CategoryController : Controller
     {
         List<CategoryModel> all = new List<CategoryModel>();
-        public List<int> idsList = new List<int>();
+     //   public List<int> idsList = new List<int>();
         public async Task<ActionResult> Index(int? catId)
         {
             CategoryModel category = new CategoryModel();
-          //  List<CategoryModel> all = new List<CategoryModel>();
+            CategoryModel currentCategory = new CategoryModel();
+              List<int> idsList = new List<int>();
+        List<CategoryModel> categoryList = new List<CategoryModel>();
+            //  List<CategoryModel> all = new List<CategoryModel>();
 
             //List<CategoryModel> catPathList = new List<CategoryModel>();
             ItemModel item = new ItemModel();
@@ -25,20 +28,27 @@ namespace PosEcommerce.Controllers
             // List<CategoryModel> categoryList = new List<CategoryModel>();
             if (catId == 0 || catId == null)
             {
-                ViewBag.categoryList = all.Where(x => x.parentId == 0).ToList();
+                categoryList=all.Where(x => x.parentId == 0).ToList();
+              
                 ViewBag.itemList = allitems;
                 ViewBag.catPathList =  GetCategoryPath(0);
-                ViewBag.idsList = idsList.ToList();
+                currentCategory.categoryId = 0;
+                currentCategory.name = "Categories";
+
+             //   ViewBag.idsList = idsList.ToList();
+
             }
             else
             {
-                ViewBag.categoryList = all.Where(x => x.parentId == catId).ToList();
+                categoryList = all.Where(x => x.parentId == catId).ToList();
+               
 
                 ViewBag.catPathList =  GetCategoryPath((int)catId);
-              GetCategoriesOfparent((int)catId);//fill idsList
-                ViewBag.idsList = idsList.ToList();//4test
+                idsList= GetCategoriesOfparent((int)catId, idsList);//fill idsList
+               // ViewBag.idsList = idsList.ToList();//4test
                 ViewBag.itemList = allitems.Where(x => idsList.Contains((int)x.categoryId)).ToList();
-            
+                currentCategory = all.Where(C => C.categoryId == (int)catId).FirstOrDefault();
+
                 //List<int> catIds = new List<int>();
                 //foreach (CategoryModel row in ViewBag.catPathList)
                 //{
@@ -46,7 +56,17 @@ namespace PosEcommerce.Controllers
                 //}
                 //
             }
+            List<int> idsListitem =  new List<int>();
+            int catidcurrent = catId == null ? 0 :(int) catId;
 
+            foreach (CategoryModel row in categoryList)
+            {
+                idsListitem = new List<int>();
+                 idsListitem = GetCategoriesOfparent((int)row.categoryId, idsListitem);
+                row.itemsCount= allitems.Where(x => idsListitem.Contains((int)x.categoryId)).ToList().Count();
+            }
+            ViewBag.categoryList = categoryList;
+           ViewBag.currentCategory = currentCategory;
             //int i = 0;
             //           foreach(var row in ViewBag.categoryList)
             //            {
@@ -74,18 +94,20 @@ namespace PosEcommerce.Controllers
             var categoriesList = all.Where(x => x.parentId == parentId && x.isActive == 1).ToList();
             return categoriesList;
         }
-        public List<CategoryModel> GetsonCategories(List<CategoryModel> mainList)
+        public List<int> GetsonCategories(List<CategoryModel> mainList, List<int> idsList)
         {
 
             foreach (CategoryModel row in mainList)
             {
-                row.childCategories = GetSonsbyParentId(row.categoryId);
                 idsList.Add(row.categoryId);
+                List<int> tmpid = new List<int>();
+                tmpid = GetSonsbyParentId(row.categoryId, idsList);
+              //  idsList.Add(tmpid);
             }
 
-            return mainList;
+            return idsList;
         }
-        public List<CategoryModel> GetSonsbyParentId(int? parentId)
+        public List<int> GetSonsbyParentId(int? parentId, List<int> idsList)
         {
 
             var categoriesList = all.Where(x => x.parentId == parentId && x.isActive == 1).ToList().OrderBy(x => x.createDate).ToList();
@@ -93,15 +115,18 @@ namespace PosEcommerce.Controllers
 
             foreach (CategoryModel rowch in categoriesList)
             {
+             idsList.Add(rowch.categoryId);
+                List<int>  tmpid = new List<int>();
                 // rowch.childCategories = GetSonsbyParentId(rowch.categoryId);
-                GetSonsbyParentId(rowch.categoryId);
-                idsList.Add(rowch.categoryId);
+                tmpid= GetSonsbyParentId(rowch.categoryId, idsList);
+
+              //  idsList.AddRange(tmpid);
             }
-            return categoriesList;
+            return idsList;
 
         }
 
-        public List<int> GetCategoriesOfparent(int categoryId)
+        public List<int> GetCategoriesOfparent(int categoryId, List<int> idsList)
         {
             try
             {
@@ -111,7 +136,7 @@ namespace PosEcommerce.Controllers
                 List<CategoryModel> mainList = new List<CategoryModel>();
                 idsList.Add(categoryId);
                 mainList = GetCategoriesroot(categoryId);
-                mainList = GetsonCategories(mainList);
+                idsList = GetsonCategories(mainList, idsList);
 
                 return idsList;
             }
@@ -147,6 +172,7 @@ namespace PosEcommerce.Controllers
                                 //p.fixedTax ,
                                 //p.updateDate,
                                 //p.updateUserId,
+                                notes = p.categoryId == categoryId ? "last" : "0",
                             }).FirstOrDefault();
 
 
@@ -158,8 +184,8 @@ namespace PosEcommerce.Controllers
                         //tempcate.createUserId = category.createUserId;
                         //tempcate.details = category.details;
                         tempcate.image = category.image;
-                        //tempcate.notes = category.notes;
-                        tempcate.parentId = category.parentId;
+                tempcate.notes = category.notes;
+                tempcate.parentId = category.parentId;
                         //tempcate.taxes = category.taxes;
                         //tempcate.fixedTax = category.fixedTax;
                         //tempcate.updateDate = category.updateDate;
@@ -173,10 +199,6 @@ namespace PosEcommerce.Controllers
                     }
                     treecat.Reverse();
                     return treecat;
-
-               
-
-
              
         }
 
