@@ -37,6 +37,7 @@ namespace PosEcommerce.Models
         public Nullable<int> id { get; set; }
         public string notes { get; set; }
         public Nullable<int> itemsCount { get; set; }
+        public Nullable<int> categoriesCount { get; set; }
         public List<CategoryModel> childCategories { get; set; }
       
         #endregion

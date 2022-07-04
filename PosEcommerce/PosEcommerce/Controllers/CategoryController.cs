@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PosEcommerce.Models;
 using System.Threading.Tasks;
+ 
 
 namespace PosEcommerce.Controllers
 {
@@ -25,6 +26,16 @@ namespace PosEcommerce.Controllers
             List<ItemModel> allitems = new List<ItemModel>();
             all = await category.GetAllCategories();
             allitems = await item.GetAllItems();
+            foreach (ItemModel row in allitems)
+            {
+                row.price = row.ItemUnitList.FirstOrDefault().price;
+                if (row.ItemUnitList.FirstOrDefault().offerId !=null && row.ItemUnitList.FirstOrDefault().offerId!=0)
+                {
+                    row.disPrice = GetdiscountPrice(row.ItemUnitList.FirstOrDefault().discountType, row.ItemUnitList.FirstOrDefault().discountValue, row.ItemUnitList.FirstOrDefault().price);
+         
+                }
+             
+            }
             // List<CategoryModel> categoryList = new List<CategoryModel>();
             if (catId == 0 || catId == null)
             {
@@ -45,8 +56,11 @@ namespace PosEcommerce.Controllers
 
                 ViewBag.catPathList =  GetCategoryPath((int)catId);
                 idsList= GetCategoriesOfparent((int)catId, idsList);//fill idsList
-               // ViewBag.idsList = idsList.ToList();//4test
-                ViewBag.itemList = allitems.Where(x => idsList.Contains((int)x.categoryId)).ToList();
+                List<ItemModel> currentitemList= allitems.Where(x => idsList.Contains((int)x.categoryId)).ToList();
+
+                // ViewBag.idsList = idsList.ToList();//4test
+                ViewBag.itemList = currentitemList;
+
                 currentCategory = all.Where(C => C.categoryId == (int)catId).FirstOrDefault();
 
                 //List<int> catIds = new List<int>();
@@ -63,9 +77,17 @@ namespace PosEcommerce.Controllers
             {
                 idsListitem = new List<int>();
                  idsListitem = GetCategoriesOfparent((int)row.categoryId, idsListitem);
+                //idsListitem = idsListitem.GroupBy(x => x).Select(grp => grp.Key).ToList();
                 row.itemsCount= allitems.Where(x => idsListitem.Contains((int)x.categoryId)).ToList().Count();
+                //row.categoriesCount = idsListitem.Count();
             }
-            ViewBag.categoryList = categoryList;
+            idsListitem = new List<int>();
+            idsListitem = GetCategoriesOfparent((int)currentCategory.categoryId, idsListitem);
+            idsListitem = idsListitem.GroupBy(x => x).Where(x => x.Key!= (int)currentCategory.categoryId).Select(grp => grp.Key).ToList();
+            currentCategory.categoriesCount = idsListitem.Count();
+           ViewBag.categoryList = categoryList;
+           
+         
            ViewBag.currentCategory = currentCategory;
             //int i = 0;
             //           foreach(var row in ViewBag.categoryList)
@@ -83,7 +105,8 @@ namespace PosEcommerce.Controllers
             //                    i++;
             //                }
             //            }
-            return View(ViewBag.categoryList);
+
+            return View();
         }
 
 
@@ -202,6 +225,26 @@ namespace PosEcommerce.Controllers
              
         }
 
+
+        public decimal GetdiscountPrice(string discountType,decimal? discountValue,decimal? price)
+        {
+            decimal disPrice = 0;
+            decimal percent = 0;
+            if (discountType=="2")
+            {
+                percent = (decimal)price * (decimal)discountValue / (decimal)100;
+                disPrice = (decimal)price - (decimal)percent;
+            }
+            else
+            {
+                disPrice = (decimal)price - (decimal)discountValue;
+            }
+        
+            return disPrice;
+
+        }
+
+   
     }
 
 }

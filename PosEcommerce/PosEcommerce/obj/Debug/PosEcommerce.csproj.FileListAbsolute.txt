@@ -85,3 +85,7 @@ D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\Microsoft.IdentityModel.Tokens.xml
 D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\System.IdentityModel.Tokens.Jwt.xml
 D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\images\category\index.html
 D:\ASP\posecom\PosEcommerce\PosEcommerce\obj\Debug\PosEcommerce.csprojAssemblyReference.cache
+D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\PagedList.dll
+D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\PagedList.Mvc.dll
+D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\PagedList.xml
+D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\PagedList.Mvc.xml

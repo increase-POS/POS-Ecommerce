@@ -85,3 +85,7 @@ D:\ASP\posecom\PosEcommerce\PosEcommerce\obj\Release\PosEcommerce.csproj.CoreCom
 D:\ASP\posecom\PosEcommerce\PosEcommerce\obj\Release\PosEcommerce.csproj.CopyComplete
 D:\ASP\posecom\PosEcommerce\PosEcommerce\obj\Release\PosEcommerce.dll
 D:\ASP\posecom\PosEcommerce\PosEcommerce\obj\Release\PosEcommerce.pdb
+D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\PagedList.dll
+D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\PagedList.Mvc.dll
+D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\PagedList.xml
+D:\ASP\posecom\PosEcommerce\PosEcommerce\bin\PagedList.Mvc.xml

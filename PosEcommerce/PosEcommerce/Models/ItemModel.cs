@@ -47,9 +47,11 @@ namespace PosEcommerce.Models
 
         public string minUnitName { get; set; }
         public string maxUnitName { get; set; }
-
+        public Nullable<decimal> price { get; set; }
+        public Nullable<decimal> basicPrice { get; set; }
+        public Nullable<decimal> priceTax { get; set; }
         public List<ItemUnitModel> ItemUnitList { get; set; }
-        
+        public Nullable<decimal> disPrice { get; set; }
 
         #endregion
 

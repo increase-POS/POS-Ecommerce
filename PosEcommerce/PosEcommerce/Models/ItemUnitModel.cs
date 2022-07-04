@@ -23,7 +23,7 @@ namespace PosEcommerce.Models
         public Nullable<int> offerId { get; set; }
         public string discountType { get; set; }
         public Nullable<decimal> discountValue { get; set; }
-        public Nullable<decimal> desPrice { get; set; }
+        public Nullable<decimal> disPrice { get; set; }
 
         //
         public int itemUnitId { get; set; }

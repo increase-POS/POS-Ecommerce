@@ -39,11 +39,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>02/18/2018 08:44:54</publishTime>
     </File>
+    <File Include="bin/PagedList.dll">
+      <publishTime>09/30/2013 17:36:38</publishTime>
+    </File>
+    <File Include="bin/PagedList.Mvc.dll">
+      <publishTime>09/30/2013 18:15:20</publishTime>
+    </File>
     <File Include="bin/PosEcommerce.dll">
-      <publishTime>07/02/2022 19:48:51</publishTime>
+      <publishTime>07/04/2022 15:41:28</publishTime>
     </File>
     <File Include="bin/PosEcommerce.pdb">
-      <publishTime>07/02/2022 19:48:51</publishTime>
+      <publishTime>07/04/2022 15:41:28</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -234,6 +240,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/bootstrap.min.css.map">
       <publishTime>06/21/2022 23:59:54</publishTime>
     </File>
+    <File Include="Content/PagedList.css">
+      <publishTime>07/03/2022 18:29:29</publishTime>
+    </File>
     <File Include="Content/Site.css">
       <publishTime>06/21/2022 23:59:50</publishTime>
     </File>
@@ -358,7 +367,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/08/2018 18:39:57</publishTime>
     </File>
     <File Include="Views/Category/Index.cshtml">
-      <publishTime>07/02/2022 19:43:49</publishTime>
+      <publishTime>07/04/2022 15:17:14</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>06/21/2022 23:59:50</publishTime>
@@ -376,7 +385,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2022 23:59:50</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/02/2022 16:56:56</publishTime>
+      <publishTime>07/03/2022 17:47:59</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/21/2022 23:59:50</publishTime>
@@ -385,7 +394,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/21/2022 23:59:50</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/23/2022 15:40:23</publishTime>
+      <publishTime>07/04/2022 15:41:29</publishTime>
     </File>
   </ItemGroup>
 </Project>
