@@ -155,6 +155,7 @@
     <Compile Include="Models\ItemUnitModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\PaginateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

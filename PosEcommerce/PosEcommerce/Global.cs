@@ -12,7 +12,7 @@ namespace PosEcommerce.Models
         //public static string APIUri = "http://192.168.1.5:44370/api/";
 
         #region pagination settings
-        public static int rowsInPage = 5;
+        public static int rowsInPage = 8;
         #endregion
         #region folders pathes
         public const string TMPFolder = "C:/Temp/Thumb";

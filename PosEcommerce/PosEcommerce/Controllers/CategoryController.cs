@@ -13,17 +13,20 @@ namespace PosEcommerce.Controllers
     {
         List<CategoryModel> all = new List<CategoryModel>();
      //   public List<int> idsList = new List<int>();
-        public async Task<ActionResult> Index(int? catId)
+        public async Task<ActionResult> Index(int? catId,int? page)
         {
+            if (page==null||page==0)
+            {
+                page = 1;
+            }
+
             CategoryModel category = new CategoryModel();
             CategoryModel currentCategory = new CategoryModel();
               List<int> idsList = new List<int>();
-        List<CategoryModel> categoryList = new List<CategoryModel>();
-            //  List<CategoryModel> all = new List<CategoryModel>();
-
-            //List<CategoryModel> catPathList = new List<CategoryModel>();
+        List<CategoryModel> categoryList = new List<CategoryModel>();      
             ItemModel item = new ItemModel();
             List<ItemModel> allitems = new List<ItemModel>();
+            List<ItemModel> currentitemList = new List<ItemModel>();
             all = await category.GetAllCategories();
             allitems = await item.GetAllItems();
             foreach (ItemModel row in allitems)
@@ -40,8 +43,8 @@ namespace PosEcommerce.Controllers
             if (catId == 0 || catId == null)
             {
                 categoryList=all.Where(x => x.parentId == 0).ToList();
-              
-                ViewBag.itemList = allitems;
+
+                currentitemList = allitems;
                 ViewBag.catPathList =  GetCategoryPath(0);
                 currentCategory.categoryId = 0;
                 currentCategory.name = "Categories";
@@ -56,10 +59,10 @@ namespace PosEcommerce.Controllers
 
                 ViewBag.catPathList =  GetCategoryPath((int)catId);
                 idsList= GetCategoriesOfparent((int)catId, idsList);//fill idsList
-                List<ItemModel> currentitemList= allitems.Where(x => idsList.Contains((int)x.categoryId)).ToList();
+             currentitemList= allitems.Where(x => idsList.Contains((int)x.categoryId)).ToList();
 
                 // ViewBag.idsList = idsList.ToList();//4test
-                ViewBag.itemList = currentitemList;
+            
 
                 currentCategory = all.Where(C => C.categoryId == (int)catId).FirstOrDefault();
 
@@ -85,26 +88,28 @@ namespace PosEcommerce.Controllers
             idsListitem = GetCategoriesOfparent((int)currentCategory.categoryId, idsListitem);
             idsListitem = idsListitem.GroupBy(x => x).Where(x => x.Key!= (int)currentCategory.categoryId).Select(grp => grp.Key).ToList();
             currentCategory.categoriesCount = idsListitem.Count();
-           ViewBag.categoryList = categoryList;
-           
-         
-           ViewBag.currentCategory = currentCategory;
-            //int i = 0;
-            //           foreach(var row in ViewBag.categoryList)
-            //            {
+            // paging
+            int pagesnumber=0;
+            int allrowsCount = 0;
+            int currentpage = 0;
+            int allpagesCount=0;
+            PaginateModel pagemodel = new PaginateModel();
+            allrowsCount = currentitemList.Count();
+            currentitemList = currentitemList.Skip(((int)page - 1) * Global.rowsInPage)
+                            .Take(Global.rowsInPage).ToList();
+            double pageCount = (double)((decimal)allrowsCount / Convert.ToDecimal(Global.rowsInPage));
+            allpagesCount = (int)Math.Ceiling(pageCount);
+          
+            pagemodel.currentPage = page;
+            pagemodel.allpagesCount = allpagesCount;
 
-            //                var image = row.image;
-            //                if (image != null && image.ToString() != "")
-            //                {
-            //                    //if (i<2)
-            //                    {
-            //var imageArr = await category.downloadImage(image);
-            //                        row.notes = imageArr;
-            //                    }
+            ViewBag.paginate = pagemodel;
+            // end page
+            ViewBag.categoryList = categoryList;
+            ViewBag.itemList = currentitemList;
 
-            //                    i++;
-            //                }
-            //            }
+            ViewBag.currentCategory = currentCategory;
+        
 
             return View();
         }
