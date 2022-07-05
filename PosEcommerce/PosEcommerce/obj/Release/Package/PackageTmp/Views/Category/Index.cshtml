@@ -9,9 +9,9 @@
         <div class="col-md-4">
             <div class="categories">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action disabled active" aria-current="true">
+                    <a href="#" class="list-group-item list-group-item-action disabled active d-flex justify-content-between align-items-center" aria-current="true">
                         @ViewBag.currentCategory.name
-                        <span class="badge badge-primary badge-pill">@ViewBag.currentCategory.categoriesCount</span>
+                        <span class="badge badge-light badge-pill">@ViewBag.currentCategory.itemsCount</span>
                     </a>
                     @foreach (var row in ViewBag.categoryList)
                     {
@@ -131,18 +131,9 @@
                                 
                                     @for (int i = 1; i <= ViewBag.paginate.allpagesCount; i++)
                                     {
-
-                                        if (i != ViewBag.paginate.currentPage)
-                                        {
-                                            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "Category",new { catId = @ViewBag.currentCategory.categoryId,page=@i})">@i</a></li>
-
-                                        }
-                                        else
-                                        {
-                                            <li class="page-item"> @i </li>
-
-                                        }
-
+                                       
+                                            <li class="page-item @(ViewBag.paginate.currentPage == i ? "disabled" : string.Empty)"><a class="page-link" href="@Url.Action("Index", "Category",new { catId = @ViewBag.currentCategory.categoryId,page=@i})">@i</a></li>
+                       
                                     }                             
                                         <li class="page-item  @(ViewBag.paginate.currentPage == ViewBag.paginate.allpagesCount ? "disabled" : string.Empty)">
                                             <a class="page-link" href="@Url.Action("Index", "Category",new { catId = @ViewBag.currentCategory.categoryId,page= ViewBag.paginate.currentPage+1})">Next</a>
