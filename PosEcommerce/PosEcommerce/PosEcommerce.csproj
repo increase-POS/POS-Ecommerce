@@ -156,6 +156,7 @@
     <Compile Include="Models\ItemUnitModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Models\PaginateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -169,6 +170,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\item\default.png" />
+    <Content Include="images\item\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\category\default.png" />
     <Content Include="images\category\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

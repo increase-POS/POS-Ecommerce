@@ -34,7 +34,7 @@
 
                                 @if (@ViewBag.catPathList.Count == 0)
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Products1</li>
                                 }
                                 else
                                 {
@@ -71,7 +71,7 @@
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(Global.Categorypath + "default.png")" class="block" alt="">
+                                        <img src="@Url.Content(Global.ItemFolder + "default.png")" class="block" alt="">
 
 
                                     }
@@ -80,14 +80,14 @@
                                     <h6>@rowitem.name</h6>
                                     @if (rowitem.isOffer == 1)
                                     {
-                                        <label class="before d-inline-block">@rowitem.price KWD</label>
+                                <label class="before d-inline-block">@rowitem.price @ViewBag.currency</label>
 
 
-                                        <label class="d-inline-block">@rowitem.disPrice KWD</label>
+                                        <label class="d-inline-block">@rowitem.disPrice @ViewBag.currency</label>
                                     }
                                     else
                                     {
-                                        <label class="d-inline-block">@rowitem.price KWD</label>
+                                <label class="d-inline-block">@rowitem.price @ViewBag.currency</label>
                                     }
 
 
@@ -120,7 +120,7 @@
                     }
 
 
-                    
+              <div class="w-100">  </div>
                     <div class="col">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-end">

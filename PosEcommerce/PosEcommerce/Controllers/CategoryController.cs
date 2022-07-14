@@ -19,7 +19,7 @@ namespace PosEcommerce.Controllers
             {
                 page = 1;
             }
-
+            ViewBag.currency = Global.currency;
             CategoryModel category = new CategoryModel();
             CategoryModel currentCategory = new CategoryModel();
             List<int> idsList = new List<int>();

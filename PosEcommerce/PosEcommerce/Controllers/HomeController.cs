@@ -10,8 +10,12 @@ namespace PosEcommerce.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            SettingModel settingmodel = new SettingModel();
+            List<SettingModel> settingList = new List<SettingModel>();
+            settingList = await settingmodel.GetSetting();
+            Global.currency = settingList.Where(x => x.settingName == "currency").FirstOrDefault().value;
             return View();
         }
 
