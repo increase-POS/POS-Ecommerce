@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.IO;
+using System.Resources;
+using PosEcommerce  ;
 namespace PosEcommerce.Models
 {
     public class Global
@@ -10,6 +12,9 @@ namespace PosEcommerce.Models
         //public static string APIUri = "http://localhost:44730/api/";
         public static string APIUriserver = "http://localhost:44730/";
         //public static string APIUriserver = "http://145.239.195.166:44370/";
+     
+        public static ResourceManager resourcemanager;
+        //public static  AppResource langres = new AppResource();
         public static string APIUri = APIUriserver+ "api/";
         // "http://145.239.195.166:44370/api/";
         #region pagination settings
@@ -28,6 +33,7 @@ namespace PosEcommerce.Models
         #region global parameters
         public static string accuracy;
         public static string currency;
+
         #endregion
 
     }

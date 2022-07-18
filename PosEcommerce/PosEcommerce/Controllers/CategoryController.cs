@@ -5,21 +5,45 @@ using System.Web;
 using System.Web.Mvc;
 using PosEcommerce.Models;
 using System.Threading.Tasks;
-
-
+using System.Resources;
+using System.Reflection;
 namespace PosEcommerce.Controllers
 {
     public class CategoryController : Controller
     {
+
         List<CategoryModel> all = new List<CategoryModel>();
         //   public List<int> idsList = new List<int>();
         public async Task<ActionResult> Index(int? catId, int? page)
         {
+
+            #region sesion
+            SettingController sc = new SettingController();
+            List<SettingModel> settingList = new List<SettingModel>();
+            settingList = await sc.setSetting();
+            if (Session.Count == 0 || Session["currency"].ToString() == null)
+            {
+                Session["settingList"] = settingList;
+                Session["currency"] = settingList.Where(x => x.settingName == "currency").FirstOrDefault().value;
+                Session["com_name"] = settingList.Where(x => x.settingName == "com_name").FirstOrDefault().value;
+                Session["com_email"] = settingList.Where(x => x.settingName == "com_email").FirstOrDefault().value;
+                Session["com_mobile"] = settingList.Where(x => x.settingName == "com_mobile").FirstOrDefault().value;
+                Session["com_logo"] = settingList.Where(x => x.settingName == "com_logo").FirstOrDefault().value;
+                Session["lang"] = "en";
+              
+                Global.resourcemanager =  new ResourceManager("PosEcommerce.AppResource.ar", Assembly.GetExecutingAssembly());
+            }
+            else
+            {
+                Session["lang"] = "en";
+            }
+            sc.checkLang(Session["lang"].ToString());
+            #endregion
             if (page == null || page == 0)
             {
                 page = 1;
             }
-            ViewBag.currency = Global.currency;
+         //   ViewBag.currency = Global.currency;
             CategoryModel category = new CategoryModel();
             CategoryModel currentCategory = new CategoryModel();
             List<int> idsList = new List<int>();

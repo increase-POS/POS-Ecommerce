@@ -1,27 +1,76 @@
 ﻿@using PosEcommerce.Models;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title =@ViewBag.item.name;
 }
-<br />
-<h2>Item detail</h2>
-Item:@ViewBag.item.name;
-<br />
-Category:@ViewBag.item.categoryName;
-<div>
+    <section class="product-view p-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Library</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-container">
+                        <img src="
+                              @if (ViewBag.item.image != "" && ViewBag.item.image != null)
+                              {
+                           @Url.Content(Global.APIUriserver + "images/item/" + ViewBag.item.image.ToString())
+                              } else
+                              {
+                                  @Url.Content(Global.ItemFolder + "default.png")
+                              }" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-5">
+                    <h3>@ViewBag.item.name</h3>
+                    <p class="product-features">@ViewBag.item.details</p>
+                    <hr>
+                    <p class="price">
+                        <span class="title">@Global.resourcemanager.GetString("price").ToString(): </span>
+                        @if (@ViewBag.item.isOffer == 1)
+                        {
+                            <span class="now">@ViewBag.item.disPrice  @Session["currency"]</span>
+                            <span class="before">@ViewBag.item.price  @Session["currency"]</span>
+                        }
+                        else
+                        {
+                    <span class="now">@ViewBag.item.price  @Session["currency"]</span>
+                        }
+                    </p>
+                    <div class="qty my-3">
+                        <div class="row">
+                            <div class="col-4">
+                                <form action="">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="quantity-left-minus btn btn-dark btn-number" data-type="minus" data-field="">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </span>
+                                        <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="0" min="1" max="100">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="quantity-right-plus btn btn-dark btn-number" data-type="plus" data-field="">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="total"><span>TOTAL: </span>200 KD</p>
+                    <a class="btn btn-primary" href="#" title="Add to cart"><i class="fa fa-shopping-cart pl-2"></i>Add to Cart</a>
+                    <hr>
+                    <div class="mt-3">
+                        <a class="btn btn-dark btn-block" href="#" title="View Cart">View Cart</a>
+                        <a class="btn btn-outline-dark btn-block" href="#" title="Checkout">Checkout</a>
+                    </div>
 
-    @if (ViewBag.item.image != "" && ViewBag.item.image != null)
-    {
-
-        <img src="@Url.Content(Global.APIUriserver+"images/item/"+ ViewBag.item.image.ToString())" alt="" class="img-thumbnail text-center">
-        @*<img src="@Url.Content(Global.CategoryFolder+"/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">*@
-
-    }
-    else
-    {
-
-        <img src="@Url.Content(Global.CategoryFolder+"/default.png")" alt="" class="img-thumbnail text-center">
-        @*<img src="@Url.Content(Global.CategoryFolder+"/"+ row.image.ToString())" alt="" class="img-thumbnail text-center">*@
-
-    }
-
-</div>
+                </div>
+            </div>
+        </div>
+    </section>

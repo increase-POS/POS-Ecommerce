@@ -34,7 +34,7 @@
 
                                 @if (@ViewBag.catPathList.Count == 0)
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Products1</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Products</li>
                                 }
                                 else
                                 {
@@ -80,14 +80,14 @@
                                     <h6>@rowitem.name</h6>
                                     @if (rowitem.isOffer == 1)
                                     {
-                                <label class="before d-inline-block">@rowitem.price @ViewBag.currency</label>
+                                <label class="before d-inline-block">@rowitem.price  @Session["currency"]</label>
 
 
-                                        <label class="d-inline-block">@rowitem.disPrice @ViewBag.currency</label>
+                                <label class="d-inline-block">@rowitem.disPrice  @Session["currency"]</label>
                                     }
                                     else
                                     {
-                                <label class="d-inline-block">@rowitem.price @ViewBag.currency</label>
+                                <label class="d-inline-block">@rowitem.price  @Session["currency"]</label>
                                     }
 
 

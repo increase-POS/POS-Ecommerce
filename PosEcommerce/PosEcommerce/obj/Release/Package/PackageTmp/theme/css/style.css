@@ -24,6 +24,8 @@ body a:hover{text-decoration: none !important;}
 
 .navbar-nav a.nav-link {
   font-size: 12pt;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
 
 .navbar-nav .cart a.nav-link {
@@ -49,14 +51,14 @@ nav .logo {
   margin: auto;
 }
 
-.navbar .log-in-button svg {
+.navbar .login-button svg {
   width: 25px;
   margin-left: 15px;
   fill: #6c6c6f;
   cursor: pointer;
 }
 
-.navbar .log-in-button svg:hover {
+.navbar .login-button svg:hover {
   fill: #222222;
 }
 
@@ -98,6 +100,7 @@ nav .logo {
   border-radius: 20px;
   border: 1px solid #6c6c6f;
   padding: 3px;
+  padding-left: 10px;
 }
 
 .navbar .main-menu-button .x {
@@ -329,7 +332,183 @@ footer .copyright {
 .cart-menu .close-menu span:hover {
   color: #222222;
 }
+
+.cart-menu .cart-items {
+  min-height: 100px;
+  max-height: 55%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.cart-menu .cart-items .cancel-item {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  display: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.cart-menu .cart-items .card:hover .cancel-item {
+  display: -webkit-flex;
+}
+
+.cart-menu .cart-items .card {
+  border: none;
+}
+
+.cart-menu .cart-items .card .card-body {
+  padding: unset;
+  padding-left: 5px;
+}
+
+.cart-menu .cart-items .card .card-body .card-title, .cart-menu .cart-items .card .card-body p {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.cart-menu .cart-items .no-item p {
+  margin: 10px auto;
+}
 /* End Cart menu */
+
+/* Start Login menu */
+.login-menu {
+  position: fixed;
+  display: block;
+  height: 100%;
+  width: 300px;
+  right: -350px;
+  z-index: 1000;
+  background-color: #FFF;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.login-menu .close-menu span {
+  float: left;
+  cursor: pointer;
+}
+
+.login-menu .close-menu span:hover {
+  color: #222222;
+}
+
+.login-menu h4 {
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.login-menu .tab-active {
+  border-bottom:3px solid #6c6c6f;
+}
+
+.login-menu .data #login, .login-menu .data #signup {
+  padding: 15px;
+}
+
+.login-menu .data #signup form {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.login-menu .data #login .icon svg {
+  width: 120px;
+  fill: #1ba8e5;
+}
+
+.login-menu .data #login h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.login-menu .data #signup h3 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.login-menu .data #signup label {
+  font-weight: bold;
+}
+
+.login-menu .data #login .remember, .login-menu .data #login .forgot{
+  font-size: 16px;
+}
+
+.login-menu .data #signup .conditions {
+  font-size: 14px;
+}
+
+.login-menu .cart-items .card .card-body {
+  padding: unset;
+  padding-left: 5px;
+}
+
+.login-menu .cart-items .card .card-body .card-title, .login-menu .cart-items .card .card-body p {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.login-menu .cart-items .no-item p {
+  margin: 10px auto;
+}
+/* End Login menu */
+
+/* Start Product View Section */
+.product-view {
+  margin-bottom: 30px;
+}
+
+.product-view img {
+  width: 100%;
+  margin: auto;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.product-view .img-container {
+  overflow: hidden;
+  border: 3px solid #f3f3f3;
+}
+
+.product-view .img-container:hover img {
+  transform: scale(1.4);
+}
+
+.product-view h3 {
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.product-view .product-features {
+  font-size: 14px;
+  line-height: 2;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.product-view .price{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.product-view .price span.title{
+  color: #1ba8e5;
+}
+
+.product-view .price span.before{
+  font-size: 14px;
+  text-decoration: line-through;
+  color: #93a6b1;
+}
+
+.product-view .total{
+  font-size: 26px;
+  font-weight: bolder;
+}
+/* End Product View Section */
 
 /* Start Items */
 
@@ -466,19 +645,6 @@ footer .copyright {
 }
 
 /* End Products Section */
-
-.card {
-  border: none;
-}
-
-.card-body {
-  padding: unset;
-  padding-left: 5px;
-}
-
-.card-title {
-  font-size: 14px;
-}
 
 .list-group-item.active {
   background-color: #222222;
