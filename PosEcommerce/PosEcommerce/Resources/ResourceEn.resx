@@ -351,4 +351,10 @@
   <data name="ViewCart" xml:space="preserve">
     <value>View Cart</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Sale" xml:space="preserve">
+    <value>Sale</value>
+  </data>
 </root>

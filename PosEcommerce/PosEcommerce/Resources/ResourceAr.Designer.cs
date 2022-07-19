@@ -466,6 +466,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to جديد.
+        /// </summary>
+        internal static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to التالي.
         /// </summary>
         internal static string Next {
@@ -633,6 +642,15 @@ namespace PosEcommerce.Resources {
         internal static string Rememberme {
             get {
                 return ResourceManager.GetString("Rememberme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to عرض.
+        /// </summary>
+        internal static string Sale {
+            get {
+                return ResourceManager.GetString("Sale", resourceCulture);
             }
         }
         

@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@using PosEcommerce.Models;
+@{
+    ViewBag.Title = @Global.resourcemanager.GetString("AboutUs").ToString();
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
