@@ -273,3 +273,4 @@ D:\myproj\POS-Ecommerce\PosEcommerce\PosEcommerce\obj\Debug\PosEcommerce.csproj.
 D:\myproj\POS-Ecommerce\PosEcommerce\PosEcommerce\obj\Debug\PosEcommerce.Properties.Resources.resources
 D:\myproj\POS-Ecommerce\PosEcommerce\PosEcommerce\obj\Debug\PosEcommerce.Resources.ResourceAr.resources
 D:\myproj\POS-Ecommerce\PosEcommerce\PosEcommerce\obj\Debug\PosEcommerce.Resources.ResourceEn.resources
+D:\myproj\POS-Ecommerce\PosEcommerce\PosEcommerce\obj\Debug\PosEcommerce.csprojAssemblyReference.cache
