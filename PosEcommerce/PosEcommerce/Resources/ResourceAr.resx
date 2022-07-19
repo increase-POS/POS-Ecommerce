@@ -201,8 +201,8 @@
   <data name="ItemUnit" xml:space="preserve">
     <value>العنصر - الوحدة</value>
   </data>
-  <data name="LogOut" xml:space="preserve">
-    <value>خروج</value>
+  <data name="Logout" xml:space="preserve">
+    <value> تسجيل خروج</value>
   </data>
   <data name="Mobile" xml:space="preserve">
     <value>الموبايل</value>
@@ -287,5 +287,68 @@
   </data>
   <data name="price" xml:space="preserve">
     <value>السعر</value>
+  </data>
+  <data name="AgreetheConditions" xml:space="preserve">
+    <value>موافق على الشروط</value>
+  </data>
+  <data name="Allrightsreserved" xml:space="preserve">
+    <value>جميع الحقوق محفوظة</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>اتمام العملية</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>الأسئلة الشائعة</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>تابعنا</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>نسيت كلمة المرور</value>
+  </data>
+  <data name="Haveanaccount" xml:space="preserve">
+    <value>لديك حساب؟</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>عناصر</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل دخول</value>
+  </data>
+  <data name="LoginInformation" xml:space="preserve">
+    <value>معلومات التسجيل</value>
+  </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>معلومات شخصية</value>
+  </data>
+  <data name="Privacypolicy" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>المنتجات</value>
+  </data>
+  <data name="Quicklinks" xml:space="preserve">
+    <value>روابط سريعة</value>
+  </data>
+  <data name="Registeration" xml:space="preserve">
+    <value>التسجيل</value>
+  </data>
+  <data name="Rememberme" xml:space="preserve">
+    <value>تذكرني</value>
+  </data>
+  <data name="ShoppingCart" xml:space="preserve">
+    <value>سلة المشتريات</value>
+  </data>
+  <data name="Thecartisempty" xml:space="preserve">
+    <value>! سلة المشتريات فارغة</value>
+  </data>
+  <data name="ViewCart" xml:space="preserve">
+    <value>عرض سلة المشتريات</value>
   </data>
 </root>

@@ -19,10 +19,10 @@
         <div class="collapse navbar-collapse mr-0 d-none d-md-block">
             <ul class="navbar-nav ml-3">
                 <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("Index", "Home")">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">@Global.resourcemanager.GetString("Home").ToString()<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "Category")">Products</a>
+                    <a class="nav-link" href="@Url.Action("Index", "Category")">@Global.resourcemanager.GetString("Products").ToString()</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("About","Home")">@Global.resourcemanager.GetString("AboutUs").ToString()</a>
@@ -61,7 +61,7 @@
 
     <div class="main-menu open">
         <div class="close-menu text-right m-3">
-            <span class="text-right">Close <i class="fa fa-close fa-lg"></i></span>
+            <span class="text-right">@Global.resourcemanager.GetString("Close").ToString()<i class="fa fa-close fa-lg"></i></span>
         </div>
         <div class="clearfix"></div>
         <div class="nlist">
@@ -73,24 +73,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-				</svg>Home
+				</svg>@Global.resourcemanager.GetString("Home").ToString()
             </a>
             <a href="@Url.Action("Index", "Category")" class="">
                 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 112.14">
                     <path d="M31.21,63.63a1.92,1.92,0,0,1,0-3.84H34A8.93,8.93,0,0,1,38.66,61a7.33,7.33,0,0,1,3.12,4.43.18.18,0,0,0,0,.15l.48,2h1.1v-7.9a1.94,1.94,0,0,1,1.93-1.93H55.48a1.94,1.94,0,0,1,1.93,1.93v4.69a8.69,8.69,0,0,1,6.17-2.58,8.54,8.54,0,0,1,3,.53,10.47,10.47,0,0,1,17.92,5.26h.47a1.9,1.9,0,0,1,1.89,1.9,2.33,2.33,0,0,1-.09.58l-5,20a1.88,1.88,0,0,1-1.85,1.46H48.74C49.42,94,50.11,95.38,51,96c1.12.73,3.07.78,6.33.73H79.42a1.9,1.9,0,0,1,0,3.8h-22c-4,0-6.53,0-8.52-1.37s-3.12-3.7-4.19-7.94h0L38.17,66.55s0,0,0-.09a3.43,3.43,0,0,0-1.46-2.19A5,5,0,0,0,34,63.63H31.21Zm83.35-11v53a6.52,6.52,0,0,1-6.51,6.51H14.83a6.5,6.5,0,0,1-4.6-1.92h0a6.49,6.49,0,0,1-1.91-4.6V52.7a28.35,28.35,0,0,0,5.86.35v52.09a1.12,1.12,0,0,0,.33.8h0a1.12,1.12,0,0,0,.8.32H48.7a4.68,4.68,0,0,1,4.52-3.48h0a4.69,4.69,0,0,1,4.53,3.48H69.2a4.68,4.68,0,0,1,4.52-3.48h0a4.68,4.68,0,0,1,4.53,3.48h29.32a1.13,1.13,0,0,0,1.13-1.13V52.8a26.73,26.73,0,0,0,5.86-.16ZM68.81,75.34a1.35,1.35,0,0,1,2.65,0v7.35a1.35,1.35,0,0,1-2.65,0V75.34Zm-7.94,0a1.35,1.35,0,0,1,2.65,0v7.35a1.35,1.35,0,0,1-2.65,0V75.34Zm-7.93,0a1.35,1.35,0,0,1,2.65,0v7.35a1.35,1.35,0,0,1-2.65,0V75.34ZM69.36,64a9.27,9.27,0,0,1,2.48,3.57h9.29A7.18,7.18,0,0,0,69.36,64Zm3.11,7.37H43.39l4.33,16.31H78.45l4-16.31ZM55.2,67.53c0-.13.11-.27.17-.4V61.07a1.4,1.4,0,0,0-1.4-1.4H47a1.4,1.4,0,0,0-1.4,1.4v6.46ZM106.09,46.4c-1.25-.59-4.33-1.39-5.3-2.35a12.25,12.25,0,0,1-2.12-2.88,12.25,12.25,0,0,1-2.12,2.88c-2.14,2.13-7,3.46-10.29,3.46S78.11,46.18,76,44.05a12.25,12.25,0,0,1-2.12-2.88,12.25,12.25,0,0,1-2.12,2.88c-2.14,2.13-7,3.46-10.29,3.46s-8.15-1.33-10.29-3.46A12.25,12.25,0,0,1,49,41.17a12.25,12.25,0,0,1-2.12,2.88c-2.14,2.13-7,3.46-10.29,3.46s-8.15-1.33-10.29-3.46a12.25,12.25,0,0,1-2.12-2.88,12.25,12.25,0,0,1-2.12,2.88c-1.41,1.4-5.12,2.46-7.08,3-3.95.48-8.61-.09-11.54-3A11.77,11.77,0,0,1,0,35.71V31.07H0a1.44,1.44,0,0,1,.17-.66L8.49,3.76C9.17,1.57,10.84.16,14.07,0h94.09c2.9.31,4.79,1.53,5.57,3.74l9,26.62a1.35,1.35,0,0,1,.19.63h0a.71.71,0,0,1,0,.14v4.58a11.77,11.77,0,0,1-3.47,8.34c-3.48,3.48-8.78,3.39-13.32,2.35Z" />
-                </svg>Products
+                </svg>@Global.resourcemanager.GetString("Products").ToString()
             </a>
             <a href="@Url.Action("About","Home")" class="">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -104,17 +92,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-				</svg>About Us
+				</svg>@Global.resourcemanager.GetString("AboutUs").ToString()
             </a>
             <a href="@Url.Action("Contact", "Home")" class="">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -126,19 +104,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-				</svg>Contact Us
+				</svg>@Global.resourcemanager.GetString("contactUs").ToString()
             </a>
             <a href="@Url.Action("Contact", "Home")" class="">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.88" style="enable-background:new 0 0 122.88 122.88" xml:space="preserve">
@@ -146,19 +112,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-				</svg>Log in
+				</svg>@Global.resourcemanager.GetString("Login").ToString()
             </a>
             <a href="@Url.Action("Contact", "Home")" class="">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -180,31 +134,23 @@
 
 
 
-
-
-
-
-
-
-
-
-				</svg>Log out
+				</svg>@Global.resourcemanager.GetString("Logout").ToString()
             </a>
         </div>
     </div>
     <div class="cart-menu open">
         <div class="close-menu text-right m-3">
-            <span class="text-right">Close <i class="fa fa-close fa-lg"></i></span>
+            <span class="text-right">@Global.resourcemanager.GetString("Close").ToString() <i class="fa fa-close fa-lg"></i></span>
         </div>
         <div class="clearfix"></div>
         <div class="d-flex justify-content-between align-items-center mt-4">
-            <h4 class="mb-0 font-weight-bold">Shopping Cart</h4>
-            <h6 class="mb-0 text-muted">3 items</h6>
+            <h4 class="mb-0 font-weight-bold">@Global.resourcemanager.GetString("ShoppingCart").ToString()</h4>
+            <h6 class="mb-0 text-muted">3 @Global.resourcemanager.GetString("items").ToString()</h6>
         </div>
         <hr>
         <div class="cart-items">
             <div class="no-item text-center">
-                <p class="text-muted d-none">The cart is empty !</p>
+                <p class="text-muted d-none">@Global.resourcemanager.GetString("Thecartisempty").ToString()</p>
             </div>
             <div class="card my-3 item">
                 <div class="cancel-item"><i class="fa fa-close fa-sm"></i></div>
@@ -215,7 +161,7 @@
                     <div class="col-8">
                         <div class="card-body">
                             <h5 class="card-title">Datalogic Datalogic</h5>
-                            <p><span>QTY:</span> 15</p>
+                            <p><span>@Global.resourcemanager.GetString("Quantity").ToString():</span> 15</p>
                         </div>
                     </div>
                 </div>
@@ -229,7 +175,7 @@
                     <div class="col-8">
                         <div class="card-body">
                             <h5 class="card-title">Datalogic Datalogic</h5>
-                            <p><span>QTY:</span> 15</p>
+                            <p><span>@Global.resourcemanager.GetString("Quantity").ToString():</span> 15</p>
                         </div>
                     </div>
                 </div>
@@ -306,17 +252,17 @@
             </div>
         </div>
         <div class="mt-3">
-            <button class="btn btn-dark btn-block" type="submit">View Cart</button>
-            <button class="btn btn-outline-dark btn-block" type="submit">Checkout</button>
+            <button class="btn btn-dark btn-block" type="submit">@Global.resourcemanager.GetString("ViewCart").ToString()</button>
+            <button class="btn btn-outline-dark btn-block" type="submit">@Global.resourcemanager.GetString("Checkout").ToString()Checkout</button>
         </div>
     </div>
     <div class="login-menu open">
         <div class="close-menu text-right m-3">
-            <span class="text-right">Close <i class="fa fa-close fa-lg"></i></span>
+            <span class="text-right">@Global.resourcemanager.GetString("Close").ToString() <i class="fa fa-close fa-lg"></i></span>
         </div>
         <div class="clearfix"></div>
         <div class="d-flex justify-content-start align-items-center mt-4">
-            <h4 data-tab="login" class="mb-3 font-weight-bold col-6 tab-active">Login</h4>
+            <h4 data-tab="login" class="mb-3 font-weight-bold col-6 tab-active">@Global.resourcemanager.GetString("Login").ToString()</h4>
             <h4 data-tab="signup" class="mb-3 font-weight-bold col-6">Sign up</h4>
         </div>
         <div class="data">
@@ -327,7 +273,7 @@
 
 					</svg>
                 </div>
-                <h3 class="text-center mb-4 mt-3">Have an account?</h3>
+                <h3 class="text-center mb-4 mt-3">@Global.resourcemanager.GetString("Haveanaccount").ToString()</h3>
                 <form action="#" class="login-form">
                     <div class="form-group">
                         <input type="text" class="form-control rounded-left" placeholder="Username" required="">
@@ -337,20 +283,20 @@
                     </div>
                     <div class="form-check remember mb-2">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" checked>
-                        <label class="form-check-label mr-3" for="exampleCheck1">Remember me</label>
+                        <label class="form-check-label mr-3" for="exampleCheck1">@Global.resourcemanager.GetString("Rememberme").ToString()</label>
                     </div>
                     <div class="text-right forgot mb-3">
-                        <a href="#">Forgot Password</a>
+                        <a href="#">@Global.resourcemanager.GetString("ForgotPassword").ToString()</a>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block rounded submit">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block rounded submit">@Global.resourcemanager.GetString("Login").ToString()</button>
                     </div>
                 </form>
             </div>
             <div id="signup" style="display: none;">
-                <h3 class="text-center mb-4 mt-2">Registeration</h3>
+                <h3 class="text-center mb-4 mt-2">@Global.resourcemanager.GetString("Registeration").ToString()</h3>
                 <form action="#" class="login-form">
-                    <label for="">Personal Information</label>
+                    <label for="">@Global.resourcemanager.GetString("PersonalInformation").ToString()</label>
                     <div class="form-group">
                         <input type="text" class="form-control rounded-left" placeholder="First Name.." required="">
                     </div>
@@ -371,7 +317,7 @@
                         </select>
                     </div>
                     <hr>
-                    <label for="">Login Information</label>
+                    <label for="">@Global.resourcemanager.GetString("PersonalInformation").ToString()</label>
                     <div class="form-group">
                         <input type="text" class="form-control rounded-left" placeholder="Username.." required="">
                     </div>
@@ -381,10 +327,10 @@
                     <hr>
                     <div class="form-check conditions mb-3">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" checked>
-                        <label class="form-check-label mr-3" for="exampleCheck1">Agree the Conditions</label>
+                        <label class="form-check-label mr-3" for="exampleCheck1">@Global.resourcemanager.GetString("AgreetheConditions").ToString()</label>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block rounded submit">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block rounded submit">@Global.resourcemanager.GetString("Login").ToString()</button>
                     </div>
                 </form>
             </div>
@@ -443,35 +389,35 @@
         <div class="container footer-info">
             <div class="row">
                 <div class="col-md-3">
-                    <h6>Quick links</h6>
+                    <h6>@Global.resourcemanager.GetString("Quicklinks").ToString()</h6>
                     <ul class="list-unstyled">
-                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li><a href="">Products</a></li>
+                        <li><a href="@Url.Action("Index", "Home")">@Global.resourcemanager.GetString("Home").ToString()</a></li>
+                        <li><a href="">@Global.resourcemanager.GetString("Products").ToString()</a></li>
                     </ul>
                     <ul class="list-unstyled">
-                        <li><a href="@Url.Action("About","Home")">About Us</a></li>
-                        <li><a href="@Url.Action("Contact", "Home")">Contact us</a></li>
+                        <li><a href="@Url.Action("About","Home")">@Global.resourcemanager.GetString("AboutUs").ToString()</a></li>
+                        <li><a href="@Url.Action("Contact", "Home")">@Global.resourcemanager.GetString("contactUs").ToString()</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h6>Support</h6>
+                    <h6>@Global.resourcemanager.GetString("Support").ToString()</h6>
                     <ul class="list-unstyled">
-                        <li><a href="">FAQ</a></li>
-                        <li><a href="">Privacy policy</a></li>
+                        <li><a href="">@Global.resourcemanager.GetString("FAQ").ToString()</a></li>
+                        <li><a href="">@Global.resourcemanager.GetString("Privacypolicy").ToString()</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
                     <div class="contacts">
-                        <h6>Contact Us</h6>
+                        <h6>@Global.resourcemanager.GetString("contactUs").ToString()</h6>
                         <ul class="list-unstyled">
-                            <li>Phone: <span>@Session["com_mobile"]</span></li>
-                            <li>Email: <span>@Session["com_email"]</span></li>
+                            <li>@Global.resourcemanager.GetString("Mobile").ToString(): <span>@Session["com_mobile"]</span></li>
+                            <li>@Global.resourcemanager.GetString("Email").ToString(): <span>@Session["com_email"]</span></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class=" social-icons">
-                        <h6>Follow Us</h6>
+                        <h6>@Global.resourcemanager.GetString("FollowUs").ToString()</h6>
                         <ul class="list-unstyled">
                             <li><a href="facebook.com"><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
@@ -482,7 +428,7 @@
             </div>
             <hr>
             <div>
-                <p class="copyright">All rights reserved&copy;<span>Company  @DateTime.Now.Year</span></p>
+                <p class="copyright">@Global.resourcemanager.GetString("Allrightsreserved").ToString()&copy;<span>@Session["com_name"]  @DateTime.Now.Year</span></p>
             </div>
         </div>
     </footer>

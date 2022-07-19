@@ -79,11 +79,29 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to موافق على الشروط.
+        /// </summary>
+        internal static string AgreetheConditions {
+            get {
+                return ResourceManager.GetString("AgreetheConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الكل.
         /// </summary>
         internal static string All {
             get {
                 return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to جميع الحقوق محفوظة.
+        /// </summary>
+        internal static string Allrightsreserved {
+            get {
+                return ResourceManager.GetString("Allrightsreserved", resourceCulture);
             }
         }
         
@@ -133,11 +151,29 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to اتمام العملية.
+        /// </summary>
+        internal static string Checkout {
+            get {
+                return ResourceManager.GetString("Checkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to شيك.
         /// </summary>
         internal static string Cheque {
             get {
                 return ResourceManager.GetString("Cheque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to إغلاق.
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
             }
         }
         
@@ -268,11 +304,56 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to البريد الالكتروني.
+        /// </summary>
+        internal static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to دخول &gt;&gt;.
         /// </summary>
         internal static string Enter {
             get {
                 return ResourceManager.GetString("Enter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الأسئلة الشائعة.
+        /// </summary>
+        internal static string FAQ {
+            get {
+                return ResourceManager.GetString("FAQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تابعنا.
+        /// </summary>
+        internal static string FollowUs {
+            get {
+                return ResourceManager.GetString("FollowUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نسيت كلمة المرور.
+        /// </summary>
+        internal static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لديك حساب؟.
+        /// </summary>
+        internal static string Haveanaccount {
+            get {
+                return ResourceManager.GetString("Haveanaccount", resourceCulture);
             }
         }
         
@@ -313,6 +394,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to عناصر.
+        /// </summary>
+        internal static string items {
+            get {
+                return ResourceManager.GetString("items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to العنصر - الوحدة.
         /// </summary>
         internal static string ItemUnit {
@@ -322,11 +412,29 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to خروج.
+        ///   Looks up a localized string similar to تسجيل دخول.
         /// </summary>
-        internal static string LogOut {
+        internal static string Login {
             get {
-                return ResourceManager.GetString("LogOut", resourceCulture);
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to معلومات التسجيل.
+        /// </summary>
+        internal static string LoginInformation {
+            get {
+                return ResourceManager.GetString("LoginInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  تسجيل خروج.
+        /// </summary>
+        internal static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
         
@@ -403,6 +511,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to معلومات شخصية.
+        /// </summary>
+        internal static string PersonalInformation {
+            get {
+                return ResourceManager.GetString("PersonalInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to السابق.
         /// </summary>
         internal static string Previous {
@@ -417,6 +534,24 @@ namespace PosEcommerce.Resources {
         internal static string price {
             get {
                 return ResourceManager.GetString("price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سياسة الخصوصية.
+        /// </summary>
+        internal static string Privacypolicy {
+            get {
+                return ResourceManager.GetString("Privacypolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to المنتجات.
+        /// </summary>
+        internal static string Products {
+            get {
+                return ResourceManager.GetString("Products", resourceCulture);
             }
         }
         
@@ -448,6 +583,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to روابط سريعة.
+        /// </summary>
+        internal static string Quicklinks {
+            get {
+                return ResourceManager.GetString("Quicklinks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to عروض الأسعار.
         /// </summary>
         internal static string Quotations {
@@ -471,6 +615,24 @@ namespace PosEcommerce.Resources {
         internal static string Recepient {
             get {
                 return ResourceManager.GetString("Recepient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to التسجيل.
+        /// </summary>
+        internal static string Registeration {
+            get {
+                return ResourceManager.GetString("Registeration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تذكرني.
+        /// </summary>
+        internal static string Rememberme {
+            get {
+                return ResourceManager.GetString("Rememberme", resourceCulture);
             }
         }
         
@@ -511,6 +673,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to سلة المشتريات.
+        /// </summary>
+        internal static string ShoppingCart {
+            get {
+                return ResourceManager.GetString("ShoppingCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to المخزون.
         /// </summary>
         internal static string Stock {
@@ -525,6 +696,15 @@ namespace PosEcommerce.Resources {
         internal static string Support {
             get {
                 return ResourceManager.GetString("Support", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ! سلة المشتريات فارغة.
+        /// </summary>
+        internal static string Thecartisempty {
+            get {
+                return ResourceManager.GetString("Thecartisempty", resourceCulture);
             }
         }
         
@@ -561,6 +741,15 @@ namespace PosEcommerce.Resources {
         internal static string Vendors {
             get {
                 return ResourceManager.GetString("Vendors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to عرض سلة المشتريات.
+        /// </summary>
+        internal static string ViewCart {
+            get {
+                return ResourceManager.GetString("ViewCart", resourceCulture);
             }
         }
         

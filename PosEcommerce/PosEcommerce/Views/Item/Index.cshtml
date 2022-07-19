@@ -8,8 +8,30 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Library</li>
+
+                            @if (@ViewBag.catPathList.Count == 0)
+                            {
+                                <li class="breadcrumb-item active" aria-current="page">Products</li>
+                            }
+                            else
+                            {
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Category")">Products</a></li>
+
+                            }
+
+                            @foreach (var row in ViewBag.catPathList)
+                            {
+                                if (@row.notes == "last")
+                                {
+                                    <li class="breadcrumb-item active" aria-current="page">@row.name</li>
+                                }
+                                else
+                                {
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Category", new { catId = @row.categoryId })">@row.name</a></li>
+
+                                }
+                            }
+                          
                         </ol>
                     </nav>
                 </div>

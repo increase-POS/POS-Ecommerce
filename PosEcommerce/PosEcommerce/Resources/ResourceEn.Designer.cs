@@ -79,11 +79,29 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Agree the Conditions.
+        /// </summary>
+        internal static string AgreetheConditions {
+            get {
+                return ResourceManager.GetString("AgreetheConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
         internal static string All {
             get {
                 return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All rights reserved.
+        /// </summary>
+        internal static string Allrightsreserved {
+            get {
+                return ResourceManager.GetString("Allrightsreserved", resourceCulture);
             }
         }
         
@@ -133,11 +151,29 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Checkout.
+        /// </summary>
+        internal static string Checkout {
+            get {
+                return ResourceManager.GetString("Checkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cheque.
         /// </summary>
         internal static string Cheque {
             get {
                 return ResourceManager.GetString("Cheque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
             }
         }
         
@@ -268,11 +304,56 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter &gt;&gt; .
         /// </summary>
         internal static string Enter {
             get {
                 return ResourceManager.GetString("Enter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FAQ.
+        /// </summary>
+        internal static string FAQ {
+            get {
+                return ResourceManager.GetString("FAQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Follow Us.
+        /// </summary>
+        internal static string FollowUs {
+            get {
+                return ResourceManager.GetString("FollowUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot Password.
+        /// </summary>
+        internal static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Have an account?.
+        /// </summary>
+        internal static string Haveanaccount {
+            get {
+                return ResourceManager.GetString("Haveanaccount", resourceCulture);
             }
         }
         
@@ -313,6 +394,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to items.
+        /// </summary>
+        internal static string items {
+            get {
+                return ResourceManager.GetString("items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item - Unit.
         /// </summary>
         internal static string ItemUnit {
@@ -322,11 +412,29 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LogOut.
+        ///   Looks up a localized string similar to Log in.
         /// </summary>
-        internal static string LogOut {
+        internal static string Login {
             get {
-                return ResourceManager.GetString("LogOut", resourceCulture);
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login Information.
+        /// </summary>
+        internal static string LoginInformation {
+            get {
+                return ResourceManager.GetString("LoginInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log out.
+        /// </summary>
+        internal static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
         
@@ -403,6 +511,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Personal Information.
+        /// </summary>
+        internal static string PersonalInformation {
+            get {
+                return ResourceManager.GetString("PersonalInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Previous.
         /// </summary>
         internal static string Previous {
@@ -417,6 +534,24 @@ namespace PosEcommerce.Resources {
         internal static string price {
             get {
                 return ResourceManager.GetString("price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy policy.
+        /// </summary>
+        internal static string Privacypolicy {
+            get {
+                return ResourceManager.GetString("Privacypolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Products.
+        /// </summary>
+        internal static string Products {
+            get {
+                return ResourceManager.GetString("Products", resourceCulture);
             }
         }
         
@@ -448,6 +583,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quick links.
+        /// </summary>
+        internal static string Quicklinks {
+            get {
+                return ResourceManager.GetString("Quicklinks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quotations.
         /// </summary>
         internal static string Quotations {
@@ -471,6 +615,24 @@ namespace PosEcommerce.Resources {
         internal static string Recepient {
             get {
                 return ResourceManager.GetString("Recepient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registeration.
+        /// </summary>
+        internal static string Registeration {
+            get {
+                return ResourceManager.GetString("Registeration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remember me.
+        /// </summary>
+        internal static string Rememberme {
+            get {
+                return ResourceManager.GetString("Rememberme", resourceCulture);
             }
         }
         
@@ -511,6 +673,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shopping Cart.
+        /// </summary>
+        internal static string ShoppingCart {
+            get {
+                return ResourceManager.GetString("ShoppingCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stock.
         /// </summary>
         internal static string Stock {
@@ -525,6 +696,15 @@ namespace PosEcommerce.Resources {
         internal static string Support {
             get {
                 return ResourceManager.GetString("Support", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The cart is empty !.
+        /// </summary>
+        internal static string Thecartisempty {
+            get {
+                return ResourceManager.GetString("Thecartisempty", resourceCulture);
             }
         }
         
@@ -561,6 +741,15 @@ namespace PosEcommerce.Resources {
         internal static string Vendors {
             get {
                 return ResourceManager.GetString("Vendors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Cart.
+        /// </summary>
+        internal static string ViewCart {
+            get {
+                return ResourceManager.GetString("ViewCart", resourceCulture);
             }
         }
         

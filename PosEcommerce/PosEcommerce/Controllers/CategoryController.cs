@@ -256,6 +256,60 @@ namespace PosEcommerce.Controllers
             return treecat;
 
         }
+        public List<CategoryModel> GetCategoryPath(int categoryId,List<CategoryModel> all)
+        {
+
+
+            List<CategoryModel> treecat = new List<CategoryModel>();
+            int parentid = categoryId; // if want to show the last category 
+            while (parentid > 0)
+            {
+                CategoryModel tempcate = new CategoryModel();
+                CategoryModel category = all.Where(c => c.categoryId == parentid)
+                            .Select(p => new CategoryModel
+                            {
+                                categoryId = p.categoryId,
+                                name = p.name,
+                                categoryCode = p.categoryCode,
+                                //p.createDate,
+                                //p.createUserId,
+                                //p.details,
+                                image = p.image,
+                                //p.notes,
+                                parentId = p.parentId,
+                                //p.taxes,
+                                //p.fixedTax ,
+                                //p.updateDate,
+                                //p.updateUserId,
+                                notes = p.categoryId == categoryId ? "last" : "0",
+                            }).FirstOrDefault();
+
+
+                tempcate.categoryId = category.categoryId;
+
+                tempcate.name = category.name;
+                tempcate.categoryCode = category.categoryCode;
+                //tempcate.createDate = category.createDate;
+                //tempcate.createUserId = category.createUserId;
+                //tempcate.details = category.details;
+                tempcate.image = category.image;
+                tempcate.notes = category.notes;
+                tempcate.parentId = category.parentId;
+                //tempcate.taxes = category.taxes;
+                //tempcate.fixedTax = category.fixedTax;
+                //tempcate.updateDate = category.updateDate;
+                //tempcate.updateUserId = category.updateUserId;
+
+
+                parentid = (int)tempcate.parentId;
+
+                treecat.Add(tempcate);
+
+            }
+            treecat.Reverse();
+            return treecat;
+
+        }
 
 
         public decimal GetdiscountPrice(string discountType, decimal? discountValue, decimal? price)
