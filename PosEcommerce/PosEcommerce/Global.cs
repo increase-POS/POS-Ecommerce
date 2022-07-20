@@ -10,9 +10,9 @@ namespace PosEcommerce.Models
     public class Global
     {
         //public static string APIUri = "http://localhost:44730/api/";
-        public static string APIUriserver = "http://localhost:44730/";
+        public static string APIUriserver = "http://192.168.1.6:44730/";
         //public static string APIUriserver = "http://145.239.195.166:44370/";
-     
+        
         public static ResourceManager resourcemanager;
         //public static  AppResource langres = new AppResource();
         public static string APIUri = APIUriserver+ "api/";

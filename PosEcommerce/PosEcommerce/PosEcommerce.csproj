@@ -258,6 +258,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -268,6 +269,7 @@
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Models\APIResult.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\ItemUnitModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
@@ -404,6 +406,7 @@
     <Content Include="Views\Info\Info.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Cart\CartView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

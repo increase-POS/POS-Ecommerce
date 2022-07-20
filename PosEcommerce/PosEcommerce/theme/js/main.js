@@ -196,11 +196,11 @@ $(document).ready(function(){
               // Stop acting like a button
               e.preventDefault();
               // Get the field name
-              var quantity = parseInt($('#quantity').val());
+              var quantity = parseInt($(this).parent().parent().find('input').val());
               
               // If is not undefined
                   
-                  $('#quantity').val(quantity + 1);
+              $(this).parent().parent().find('input').val(quantity + 1);
 
                 
                   // Increment
@@ -211,13 +211,13 @@ $(document).ready(function(){
               // Stop acting like a button
               e.preventDefault();
               // Get the field name
-              var quantity = parseInt($('#quantity').val());
+              var quantity = parseInt($(this).parent().parent().find('input').val());
               
               // If is not undefined
             
                   // Increment
                   if(quantity>0){
-                  $('#quantity').val(quantity - 1);
+                    $(this).parent().parent().find('input').val(quantity - 1);
                   }
           });
 

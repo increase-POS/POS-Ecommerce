@@ -18,6 +18,10 @@ body a:hover{text-decoration: none !important;}
   border-bottom: 1px solid #77c3fa;
 }
 
+.bg-light {
+  background-color: #FFF !important;
+}
+
 .local-bg {
   height: 68px;
 }
@@ -508,7 +512,70 @@ footer .copyright {
   font-size: 26px;
   font-weight: bolder;
 }
+
+.img-container {
+  position: relative;
+}
+
+.img-container .sale {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  background: #000;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px 20px;
+}
+
+.img-container .new {
+  position: absolute;
+  left: 0;
+  top: 60px;
+  background: #f00;
+  color: yellow;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px 20px;
+}
 /* End Product View Section */
+
+/* Start Cart View Section */
+.cart-view {
+  margin-bottom: 30px;
+}
+
+.cart-view h3 {
+  font-weight: bold;
+}
+
+.cart-view .note {
+  font-size: 14px;
+  line-height: 2;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.cart-view table thead {
+  font-size: 12px;
+}
+
+.cart-view table tbody {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.cart-view .total{
+  font-size: 26px;
+  font-weight: bolder;
+}
+
+.cart-view table tbody tr td input[type=text]{
+  border: 0;
+  outline: 0;
+  background-color: #f8f9fa;
+}
+/* End Cart View Section */
 
 /* Start Items */
 

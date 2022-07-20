@@ -357,4 +357,16 @@
   <data name="Sale" xml:space="preserve">
     <value>عرض</value>
   </data>
+  <data name="AddtoCart" xml:space="preserve">
+    <value>إضافة إلى السلة</value>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>عربي</value>
+  </data>
+  <data name="CartContent" xml:space="preserve">
+    <value>المحتويات</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
 </root>

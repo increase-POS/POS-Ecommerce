@@ -12,7 +12,30 @@ namespace PosEcommerce.Controllers
     public class SettingController : Controller
     {
 
+        public async Task<ActionResult> ChangeLang(string lang,string uri)
+        {
+            //SettingModel settingmodel = new SettingModel();
+            //List<SettingModel> settingList = new List<SettingModel>();
+            //settingList = await settingmodel.GetSetting();
+            //Global.currency = settingList.Where(x => x.settingName == "currency").FirstOrDefault().value;
+            //ViewBag.currency = Global.currency;
 
+
+            if (lang=="en") {
+                Session["lang"] = "en";
+            } else
+            {
+                Session["lang"] = "ar";
+            }
+        
+            checkLang(lang);
+            // Resources.Resource1
+            // PosEcommerce.Resources.Resource1
+            // Resources.ResourceEn
+            // ViewBag.about = @Global.resourcemanager.GetString("AboutUs").ToString();
+            //   return RedirectToAction("Index","Home");
+            return Redirect(uri);  
+        }
         public async Task<List<SettingModel>> setSetting()
         {
 

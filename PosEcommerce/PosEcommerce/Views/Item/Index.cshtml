@@ -11,11 +11,11 @@
 
                             @if (@ViewBag.catPathList.Count == 0)
                             {
-                                <li class="breadcrumb-item active" aria-current="page">Products</li>
+                            <li class="breadcrumb-item active" aria-current="page">@Global.resourcemanager.GetString("Products").ToString()</li>
                             }
                             else
                             {
-                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Category")">Products</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Category")">@Global.resourcemanager.GetString("Products").ToString()</a></li>
 
                             }
 
@@ -85,11 +85,11 @@
                         </div>
                     </div>
                     <p class="total"><span>TOTAL: </span>200 KD</p>
-                    <a class="btn btn-primary" href="#" title="Add to cart"><i class="fa fa-shopping-cart pl-2"></i>Add to Cart</a>
+                    <a class="btn btn-primary" href="#" title="Add to cart"><i class="fa fa-shopping-cart pl-2"></i>@Global.resourcemanager.GetString("AddtoCart").ToString()</a>
                     <hr>
                     <div class="mt-3">
-                        <a class="btn btn-dark btn-block" href="#" title="View Cart">View Cart</a>
-                        <a class="btn btn-outline-dark btn-block" href="#" title="Checkout">Checkout</a>
+                        <a class="btn btn-dark btn-block" href="@Url.Action("CartView", "Cart")" title="View Cart">@Global.resourcemanager.GetString("ViewCart").ToString()</a>
+                        <a class="btn btn-outline-dark btn-block" href="#" title="Checkout">@Global.resourcemanager.GetString("Checkout").ToString()</a>
                     </div>
 
                 </div>

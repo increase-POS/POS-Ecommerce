@@ -53,7 +53,7 @@ namespace PosEcommerce.Controllers
             }
             else
             {
-                Session["lang"] = "en";
+              //  Session["lang"] = "en";
             }
             sc.checkLang(Session["lang"].ToString());
             // Resources.Resource1

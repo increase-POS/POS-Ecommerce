@@ -79,6 +79,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to إضافة إلى السلة.
+        /// </summary>
+        internal static string AddtoCart {
+            get {
+                return ResourceManager.GetString("AddtoCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to موافق على الشروط.
         /// </summary>
         internal static string AgreetheConditions {
@@ -106,6 +115,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to عربي.
+        /// </summary>
+        internal static string Arabic {
+            get {
+                return ResourceManager.GetString("Arabic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to عودة.
         /// </summary>
         internal static string Back {
@@ -129,6 +147,15 @@ namespace PosEcommerce.Resources {
         internal static string Branches {
             get {
                 return ResourceManager.GetString("Branches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to المحتويات.
+        /// </summary>
+        internal static string CartContent {
+            get {
+                return ResourceManager.GetString("CartContent", resourceCulture);
             }
         }
         
@@ -309,6 +336,15 @@ namespace PosEcommerce.Resources {
         internal static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        internal static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
             }
         }
         
