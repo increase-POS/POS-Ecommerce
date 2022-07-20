@@ -64,7 +64,7 @@
             <div class="cart-button float-right">
                 <i class="fa fa-shopping-cart fa-2x mr-3"></i>
                 @if (Session["count"] != null)
-                {<span> Session["count"].ToString(); </span>}
+                {<span id="span_cart_count"> @Session["count"].ToString() </span>}
             </div>
             <div class="login-button float-right">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.88" style="enable-background:new 0 0 122.88 122.88" xml:space="preserve">

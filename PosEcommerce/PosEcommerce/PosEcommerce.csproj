@@ -263,13 +263,14 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="CustomeHelper\CustomHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Models\APIResult.cs" />
-    <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\ItemTransferModel.cs" />
     <Compile Include="Models\ItemUnitModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
