@@ -66,7 +66,7 @@ namespace PosEcommerce.Controllers
                 ViewBag.item = item;
 
 
-                return View();
+                return View(item);
             }
             catch(Exception ex)
             {
