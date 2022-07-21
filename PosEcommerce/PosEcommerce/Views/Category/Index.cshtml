@@ -172,6 +172,7 @@
              dataType: "json",
             async: false,
             success: function (result) {
+                $('#span_cart_count').show();
                 $('#span_cart_count').html(result.cartCount);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
