@@ -89,6 +89,7 @@
                                     {
                                         <label class="d-inline-block">@rowitem.price  @Session["currency"]</label>
                                     }
+<<<<<<< Updated upstream
                                     <script>
                                         var nextActionParam = @Html.Raw(Json.Encode(rowitem));
                                         var itemJson = JSON.stringify(nextActionParam);
@@ -96,13 +97,22 @@
 
                                     <button onclick="addToCart(this)">
                                         <div class="add-to-cart" title="Add To Cart">
+=======
+                                   
+                                    <button onclick="addToCart(this)">
+                                        <div class="add-to-cart" title="@Global.resourcemanager.GetString("AddtoCart").ToString()">
+>>>>>>> Stashed changes
                                             <i class="fa fa-shopping-cart"></i>
                                         </div>
                                     </button>
                                     <input type="hidden" value=' @Html.Raw(Json.Encode(rowitem))' />
 
                                     <a href="@Url.Action("Index", "Item" , new { itemId=rowitem.itemId }) ">
+<<<<<<< Updated upstream
                                         <div class="view" title="Add To Cart">
+=======
+                                        <div class="view" title="@Global.resourcemanager.GetString("ViewDetails").ToString()">
+>>>>>>> Stashed changes
                                             <i class="fa fa-eye"></i>
                                         </div>
                                     </a>

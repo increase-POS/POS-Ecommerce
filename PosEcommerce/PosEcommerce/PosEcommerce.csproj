@@ -358,6 +358,7 @@
     <Content Include="theme\js\bootstrap.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="theme\js\cart-menu.js" />
     <Content Include="theme\js\jquery-2.1.3.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

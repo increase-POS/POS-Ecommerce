@@ -56,14 +56,20 @@
                         <span class="title">@Global.resourcemanager.GetString("price").ToString(): </span>
                         @if (@ViewBag.item.isOffer == 1)
                         {
-                            <span class="now">@ViewBag.item.disPrice  @Session["currency"]</span>
+                            <span id="price" class="now" data-content="@ViewBag.item.disPrice">@ViewBag.item.disPrice</span><span class="now"> @Session["currency"]</span>
                             <span class="before">@ViewBag.item.price  @Session["currency"]</span>
                         }
                         else
                         {
+<<<<<<< Updated upstream
                             <span class="now">@ViewBag.item.price  @Session["currency"]</span>
                         }
                     </p>
+=======
+                            <span class="now" id="price" data-content="@ViewBag.item.price">@ViewBag.item.price</span> <span class="now"> @Session["currency"]</span>
+                                }
+                        </p>
+>>>>>>> Stashed changes
                     <div class="qty my-3">
                         <div class="row">
                             <div class="col-4">
@@ -85,15 +91,23 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< Updated upstream
                     <p class="total"><span>TOTAL: </span>200 KD</p>
                     <script>
                         var itemParam = @Html.Raw(Json.Encode(Model));
                     </script>
                     <a class="btn btn-primary" onclick="addToCart(itemParam)" title="Add to cart"><i class="fa fa-shopping-cart pl-2"></i>@Global.resourcemanager.GetString("AddtoCart").ToString()</a>
+=======
+                    <p class="total"><span>TOTAL: </span><span id="total"></span>@Session["currency"]</p>
+                    <script>
+                        var itemParam = @Html.Raw(Json.Encode(Model));
+                    </script>
+                    <a class="btn btn-primary" href="#" onclick="addToCart(itemParam)" title="@Global.resourcemanager.GetString("AddtoCart").ToString()"><i class="fa fa-shopping-cart pl-2"></i>@Global.resourcemanager.GetString("AddtoCart").ToString()</a>
+>>>>>>> Stashed changes
                     <hr>
                     <div class="mt-3">
-                        <a class="btn btn-dark btn-block" href="@Url.Action("CartView", "Cart")" title="View Cart">@Global.resourcemanager.GetString("ViewCart").ToString()</a>
-                        <a class="btn btn-outline-dark btn-block" href="#" title="Checkout">@Global.resourcemanager.GetString("Checkout").ToString()</a>
+                        <a class="btn btn-dark btn-block" href="@Url.Action("CartView", "Cart")" title="@Global.resourcemanager.GetString("ViewCart").ToString()">@Global.resourcemanager.GetString("ViewCart").ToString()</a>
+                        <a class="btn btn-outline-dark btn-block" href="#" title="@Global.resourcemanager.GetString("Checkout").ToString()">@Global.resourcemanager.GetString("Checkout").ToString()</a>
                     </div>
 
                 </div>
@@ -123,5 +137,54 @@
                 alert('oops, something bad happened');
             }
         });
+<<<<<<< Updated upstream
+=======
+            }
+
+    function viewCartItems() {
+        var divContent = '';
+ $.ajax({
+     url: '@Url.Action("ViewCartItems", "Cart")',
+     type: "GET",
+     dataType: "json",
+     success: function (data) {  
+         $.each(data, function (index, item) {
+              divContent +=
+            `<div class="col-md-4">
+                <div class= "x_panel" >
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 profile_details">
+                                    <div class="well profile_view">
+                                        <div class="col-sm-12">
+                                            <h4 class="brief" id="divSpeciality"><i>${item.Speciality}</i></h4>
+                                            <div class="left col-xs-7"><h2 id="divFullName">${item.FullName}</h2>
+                                                <p id="divEducation">${item.Education}</p>
+                                            </div>
+                                            <div class="right col-md-5">
+                                                <img src="~/Images/img.jpg" alt="" class="img-circle img-responsive">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            });
+            $('#searchResult').html(
+                divContent
+            );
+        },
+        failure: function () {
+            alert("fail");
+        },
+        error: function () {
+            alert("error");
+        }
+    });
+>>>>>>> Stashed changes
     }
     </script>

@@ -160,10 +160,18 @@ namespace PosEcommerce.Controllers
                     offerId = offerId,
                     offerValue = discountValue,
                     offerType = decimal.Parse(discountType),
+<<<<<<< Updated upstream
                 });
             }
             else
                 itemFound.quantity = int.Parse(quantity);
+=======
+                    image = item.image,
+                });
+            }
+            else
+                itemFound.quantity += int.Parse(quantity);
+>>>>>>> Stashed changes
 
             Session["cart"] = li;
 
@@ -174,6 +182,36 @@ namespace PosEcommerce.Controllers
 
             return result;
         }
+<<<<<<< Updated upstream
+=======
+
+         [HttpGet]
+        public ActionResult ViewCartItems()
+        {
+            CategoryController cc = new CategoryController();
+
+            List<ItemTransferModel> li;
+
+            if (Session["cart"] == null)
+            {
+                li = new List<ItemTransferModel>();
+
+            }
+            else
+            {
+                li = (List<ItemTransferModel>)Session["cart"];
+              
+            }
+
+
+            JsonResult result = this.Json(new
+            {
+                cartItems = li,
+            }, JsonRequestBehavior.AllowGet);
+
+            return result;
+        }
+>>>>>>> Stashed changes
 
 
 

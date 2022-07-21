@@ -71,7 +71,7 @@ namespace PosEcommerce.Controllers
                 currentitemList = allitems;
                 ViewBag.catPathList = GetCategoryPath(0);
                 currentCategory.categoryId = 0;
-                currentCategory.name = "Categories";
+                currentCategory.name = @Global.resourcemanager.GetString("Products").ToString();
 
                 //   ViewBag.idsList = idsList.ToList();
 

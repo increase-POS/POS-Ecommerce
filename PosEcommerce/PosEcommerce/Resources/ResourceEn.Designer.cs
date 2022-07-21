@@ -808,6 +808,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to View Details.
+        /// </summary>
+        internal static string ViewDetails {
+            get {
+                return ResourceManager.GetString("ViewDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Worthy.
         /// </summary>
         internal static string Worthy {
