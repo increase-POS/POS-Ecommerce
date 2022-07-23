@@ -123,8 +123,44 @@ $(document).ready(function(){
           $('.data #'+data).show().siblings().hide();
         });
 
-        $('.alert').fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+    $('#add-cart').click(function (e) {
+        e.preventDefault;
+        var id = itemId;
+  
 
+
+        if ($('#quantity').val() > 0) {
+            var _quantity = $('#quantity').val();
+            if (_quantity == "0")
+                displayAlert();
+            else {
+                $.ajax({
+                    url: '/Cart/AddWithQuantity',
+                    data: JSON.stringify({
+                        itemId: id,
+                        quantity: _quantity
+                    }),
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    async: true,
+                    success: function (result) {
+                        $('#span_cart_count').show();
+                        $('#span_cart_count').html(result.cartCount);
+                        $('.alert-success').fadeIn(300).delay(2000).fadeOut(400);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert('oops, something bad happened');
+                    }
+                });
+            }
+
+
+
+        } else {
+            $('.alert-danger').fadeIn(300).delay(2000).fadeOut(400);
+        }
+    });
         function toggleDropdown (e) {
           const _d = $(e.target).closest('.dropdown'),
             _m = $('.dropdown-menu', _d);
@@ -147,7 +183,9 @@ $(document).ready(function(){
               // If is not undefined
                   
               $(this).parent().parent().find('input').val(quantity + 1);
-
+          //total
+            var price = parseFloat($('#price').text());
+            $('#total').text((price * (quantity + 1)));
                 
                   // Increment
               
@@ -163,7 +201,10 @@ $(document).ready(function(){
             
                   // Increment
                   if(quantity>0){
-                    $(this).parent().parent().find('input').val(quantity - 1);
+                      $(this).parent().parent().find('input').val(quantity - 1);
+                      //total
+                      var price = parseFloat($('#price').text());
+                      $('#total').text((price * (parseFloat(quantity) - 1)));
                   }
           });
 
