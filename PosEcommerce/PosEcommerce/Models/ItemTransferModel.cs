@@ -39,5 +39,15 @@ namespace PosEcommerce.Models
         public Nullable<decimal> subTotal { get; set; }
         public string image { get; set; }
 
+        public List<itemsTransProp> itemsTransProp { get; set; }
+    }
+    public  class itemsTransProp
+    {
+        public int itemsTransPropId { get; set; }
+        public Nullable<int> itemPropId { get; set; }
+        public Nullable<int> itemsTransId { get; set; }
+        public string notes { get; set; }
+        public string name { get; set; }
+        public Nullable<int> propertyId { get; set; }
     }
 }

@@ -28,9 +28,12 @@ namespace PosEcommerce.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(ItemModel item)
+        public async Task<ActionResult> Add(string itemId)
         {
             CategoryController cc = new CategoryController();
+
+            ItemModel item = new ItemModel();
+            item = await item.GetItemByID(long.Parse(itemId));
 
             List<ItemTransferModel> li;
             ItemTransferModel itemFound=null;
@@ -74,7 +77,16 @@ namespace PosEcommerce.Controllers
                 else
                     price = basicPrice;
 
+                List<itemsTransProp> itemsTransProp = new List <itemsTransProp>();
+                foreach(var ip in item.ItemsProps)
+                {
+                    itemsTransProp.Add(new itemsTransProp()
+                    {
+                        itemPropId = ip.itemPropId,
+                        name = ip.propValue,
 
+                    });
+                }
 
                 li.Add(new ItemTransferModel()
                 {
@@ -86,6 +98,8 @@ namespace PosEcommerce.Controllers
                     offerId = offerId,
                     offerValue = discountValue,
                     offerType = decimal.Parse(discountType),
+                    image = item.image,
+                    itemsTransProp = itemsTransProp,
                 });
             }
             else
@@ -102,9 +116,12 @@ namespace PosEcommerce.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddWithQuantity(ItemModel item, string quantity)
+        public async Task<ActionResult> AddWithQuantity(string itemId, string quantity)
         {
             CategoryController cc = new CategoryController();
+
+            ItemModel item = new ItemModel();
+            item = await item.GetItemByID(long.Parse(itemId));
 
             List<ItemTransferModel> li;
             ItemTransferModel itemFound=null;
@@ -149,6 +166,16 @@ namespace PosEcommerce.Controllers
                     price = basicPrice;
 
 
+                List<itemsTransProp> itemsTransProp = new List<itemsTransProp>();
+                foreach (var ip in item.ItemsProps)
+                {
+                    itemsTransProp.Add(new itemsTransProp()
+                    {
+                        itemPropId = ip.itemPropId,
+                        name = ip.propValue,
+
+                    });
+                }
 
                 li.Add(new ItemTransferModel()
                 {

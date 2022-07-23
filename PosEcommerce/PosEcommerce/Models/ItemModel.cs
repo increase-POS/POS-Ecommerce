@@ -53,6 +53,7 @@ namespace PosEcommerce.Models
         public List<ItemUnitModel> ItemUnitList { get; set; }
         public Nullable<decimal> disPrice { get; set; }
 
+        public List<itemsProp> ItemsProps { get; set; }
         #endregion
 
 
@@ -128,7 +129,7 @@ namespace PosEcommerce.Models
             }
         }
 
-        public async Task<ItemModel> GetItemByID(int itemId)
+        public async Task<ItemModel> GetItemByID(long itemId)
         {
             ItemModel item = new ItemModel();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -147,5 +148,19 @@ namespace PosEcommerce.Models
             return item;
         }
         #endregion
+    }
+
+    public class itemsProp
+    {
+        public int itemPropId { get; set; }
+        public Nullable<int> propertyItemId { get; set; }
+        public Nullable<int> itemId { get; set; }
+        public Nullable<int> isActive { get; set; }
+        public string propValue { get; set; }
+        public string propName { get; set; }
+        public Nullable<System.DateTime> createDate { get; set; }
+        public Nullable<System.DateTime> updateDate { get; set; }
+        public Nullable<int> createUserId { get; set; }
+        public Nullable<int> updateUserId { get; set; }
     }
 }

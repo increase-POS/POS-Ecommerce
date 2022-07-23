@@ -11,7 +11,7 @@ $(document).ready(function(){
             },1000);
 
         });
-  
+
         $(".menu-bg").click(function(){
           if (!$('.main-menu').hasClass('open')) {
             $('.main-menu').addClass('open');
@@ -123,19 +123,32 @@ $(document).ready(function(){
           $('.data #'+data).show().siblings().hide();
         });
 
+        $('.alert').fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+
+        function toggleDropdown (e) {
+          const _d = $(e.target).closest('.dropdown'),
+            _m = $('.dropdown-menu', _d);
+          setTimeout(function(){
+            const shouldOpen = e.type !== 'click' && _d.is(':hover');
+            _m.toggleClass('show', shouldOpen);
+            _d.toggleClass('show', shouldOpen);
+            $('[data-toggle="dropdown"]', _d).attr('aria-expanded', shouldOpen);
+          }, e.type === 'mouseleave' ? 300 : 0);
+        }
+
         var quantitiy=0;
         $('.quantity-right-plus').click(function(e){
               
               // Stop acting like a button
               e.preventDefault();
               // Get the field name
-            var quantity = parseInt($(this).parent().parent().find('input').val());
+              var quantity = parseInt($(this).parent().parent().find('input').val());
               
               // If is not undefined
                   
               $(this).parent().parent().find('input').val(quantity + 1);
-            var price = parseFloat($('#price').text());
-            $('#total').text((price * (quantity + 1)));
+
+                
                   // Increment
               
           });
@@ -150,21 +163,10 @@ $(document).ready(function(){
             
                   // Increment
                   if(quantity>0){
-                      $(this).parent().parent().find('input').val(quantity - 1);
-                      var price = parseFloat($('#price').text());
-                      $('#total').text((price * (quantity -1)));
+                    $(this).parent().parent().find('input').val(quantity - 1);
                   }
           });
-    function toggleDropdown(e) {
-        const _d = $(e.target).closest('.dropdown'),
-            _m = $('.dropdown-menu', _d);
-        setTimeout(function () {
-            const shouldOpen = e.type !== 'click' && _d.is(':hover');
-            _m.toggleClass('show', shouldOpen);
-            _d.toggleClass('show', shouldOpen);
-            $('[data-toggle="dropdown"]', _d).attr('aria-expanded', shouldOpen);
-        }, e.type === 'mouseleave' ? 300 : 0);
-    }
+
         $('body')
           .on('mouseenter mouseleave','.dropdown',toggleDropdown)
           .on('click', '.dropdown-menu a', toggleDropdown);

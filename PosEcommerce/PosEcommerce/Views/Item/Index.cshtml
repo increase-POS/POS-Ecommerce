@@ -12,7 +12,7 @@
 
                             @if (@ViewBag.catPathList.Count == 0)
                             {
-                            <li class="breadcrumb-item active" aria-current="page">@Global.resourcemanager.GetString("Products").ToString()</li>
+                                <li class="breadcrumb-item active" aria-current="page">@Global.resourcemanager.GetString("Products").ToString()</li>
                             }
                             else
                             {
@@ -32,7 +32,7 @@
 
                                 }
                             }
-                          
+
                         </ol>
                     </nav>
                 </div>
@@ -89,11 +89,14 @@
                     </div>
 
                     <p class="total"><span>TOTAL: </span><span id="total"></span>@Session["currency"]</p>
-                    <script>
-                        var itemParam = @Html.Raw(Json.Encode(Model));
-                    </script>
-                    <a class="btn btn-primary" href="#" onclick="addToCart(itemParam)" title="@Global.resourcemanager.GetString("AddtoCart").ToString()"><i class="fa fa-shopping-cart pl-2"></i>@Global.resourcemanager.GetString("AddtoCart").ToString()</a>
 
+                    <button type="button" class="btn btn-primary mb-3" title="Add to cart"  onclick="addToCart(@Model.itemId)"><i class="fa fa-shopping-cart pl-2"></i>@Global.resourcemanager.GetString("AddtoCart").ToString()</button>
+                    <div class="alert alert-danger d-none" id="div-danger-alert" role="alert">
+                        This is a danger alert—check it out!
+                    </div>
+                    <div class="alert alert-success d-none" id="div-success-alert" role="alert">
+                        This is a success alert—check it out!
+                    </div>
                     <hr>
                     <div class="mt-3">
                         <a class="btn btn-dark btn-block" href="@Url.Action("CartView", "Cart")" title="@Global.resourcemanager.GetString("ViewCart").ToString()">@Global.resourcemanager.GetString("ViewCart").ToString()</a>
@@ -101,79 +104,61 @@
                     </div>
 
                 </div>
+                <div class="col-12 mb-5">
+                    <h3>Properties</h3>
+                    <hr>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Colors</th>
+                                <td>White, Blue, Red, Black</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Size</th>
+                                <td>Xl, L, M, S</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
 
 
     <script>
-    function addToCart(_item) {
+    function addToCart(_itemId) {
         var _quantity = $('#quantity').val();
-
-        $.ajax({
-            url: '@Url.Action("AddWithQuantity", "Cart")',
-            data: {
-                item: _item,
-                quantity: _quantity
-            },
-            type: "POST",
-              dataType: "json",
-            async: false,
-            success: function (result) {
-                $('#span_cart_count').show();
-                $('#span_cart_count').html(result.cartCount);
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('oops, something bad happened');
-            }
-        });
-
-            }
-
-    function viewCartItems() {
-        var divContent = '';
- $.ajax({
-     url: '@Url.Action("ViewCartItems", "Cart")',
-     type: "GET",
-     dataType: "json",
-     success: function (data) {  
-         $.each(data, function (index, item) {
-              divContent +=
-            `<div class="col-md-4">
-                <div class= "x_panel" >
-                    <div class="x_content">
-                        <div class="row">
-                            <div class="clearfix"></div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 profile_details">
-                                    <div class="well profile_view">
-                                        <div class="col-sm-12">
-                                            <h4 class="brief" id="divSpeciality"><i>${item.Speciality}</i></h4>
-                                            <div class="left col-xs-7"><h2 id="divFullName">${item.FullName}</h2>
-                                                <p id="divEducation">${item.Education}</p>
-                                            </div>
-                                            <div class="right col-md-5">
-                                                <img src="~/Images/img.jpg" alt="" class="img-circle img-responsive">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
+        if (_quantity == "0")
+            displayAlert();
+        else {
+            $.ajax({
+                url: '@Url.Action("AddWithQuantity", "Cart")',
+                data:JSON.stringify( {
+                    itemId: _itemId,
+                    quantity: _quantity
+                }),
+                type: "POST",
+                dataType: "json",
+                 contentType: "application/json; charset=utf-8",
+                async: true,
+                success: function (result) {
+                    $('#span_cart_count').show();
+                    $('#span_cart_count').html(result.cartCount);
+                     $('#div-success-alert').fadeIn(300);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert('oops, something bad happened');
+                }
             });
-            $('#searchResult').html(
-                divContent
-            );
-        },
-        failure: function () {
-            alert("fail");
-        },
-        error: function () {
-            alert("error");
         }
-    });
 
     }
+
+    function displayAlert(e) {
+        e.preventDefault();
+        $(this).fadeIn( 300 ).delay( 2000 ).fadeOut( 400 );
+    }
+   
+
     </script>
