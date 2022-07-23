@@ -89,30 +89,20 @@
                                     {
                                         <label class="d-inline-block">@rowitem.price  @Session["currency"]</label>
                                     }
-<<<<<<< Updated upstream
-                                    <script>
-                                        var nextActionParam = @Html.Raw(Json.Encode(rowitem));
-                                        var itemJson = JSON.stringify(nextActionParam);
-                                    </script>
+
+
 
                                     <button onclick="addToCart(this)">
-                                        <div class="add-to-cart" title="Add To Cart">
-=======
-                                   
-                                    <button onclick="addToCart(this)">
                                         <div class="add-to-cart" title="@Global.resourcemanager.GetString("AddtoCart").ToString()">
->>>>>>> Stashed changes
                                             <i class="fa fa-shopping-cart"></i>
                                         </div>
                                     </button>
                                     <input type="hidden" value=' @Html.Raw(Json.Encode(rowitem))' />
 
                                     <a href="@Url.Action("Index", "Item" , new { itemId=rowitem.itemId }) ">
-<<<<<<< Updated upstream
-                                        <div class="view" title="Add To Cart">
-=======
+
+
                                         <div class="view" title="@Global.resourcemanager.GetString("ViewDetails").ToString()">
->>>>>>> Stashed changes
                                             <i class="fa fa-eye"></i>
                                         </div>
                                     </a>
@@ -169,25 +159,28 @@
 </div>
 
 
-<script>
-    function addToCart(btn) {
-        var hiddenInput = $(btn).siblings('input:hidden');
-        var _item = hiddenInput.val();
 
-        $.ajax({
-            url: '@Url.Action("Add", "Cart")',
-            data: _item,
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-             dataType: "json",
-            async: false,
-            success: function (result) {
-                $('#span_cart_count').show();
-                $('#span_cart_count').html(result.cartCount);
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('oops, something bad happened');
-            }
-        });
-    }
+<script type="text/javascript">
+
+        function addToCart(btn) {
+            var hiddenInput = $(btn).siblings('input:hidden');
+            var _item = hiddenInput.val();
+
+            $.ajax({
+                url: '@Url.Action("Add", "Cart")',
+                data: _item,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (result) {
+                    $('#span_cart_count').show();
+                    $('#span_cart_count').html(result.cartCount);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert('oops, something bad happened');
+                }
+            });
+        }
+
 </script>
