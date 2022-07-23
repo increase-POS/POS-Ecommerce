@@ -37,9 +37,7 @@ namespace PosEcommerce.Models
         public string itemType { get; set; }
         public string cause { get; set; }
         public Nullable<decimal> subTotal { get; set; }
-<<<<<<< Updated upstream
-=======
         public string image { get; set; }
->>>>>>> Stashed changes
+
     }
 }

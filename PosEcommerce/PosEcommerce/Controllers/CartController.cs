@@ -160,18 +160,12 @@ namespace PosEcommerce.Controllers
                     offerId = offerId,
                     offerValue = discountValue,
                     offerType = decimal.Parse(discountType),
-<<<<<<< Updated upstream
-                });
-            }
-            else
-                itemFound.quantity = int.Parse(quantity);
-=======
                     image = item.image,
                 });
             }
             else
                 itemFound.quantity += int.Parse(quantity);
->>>>>>> Stashed changes
+
 
             Session["cart"] = li;
 
@@ -182,8 +176,6 @@ namespace PosEcommerce.Controllers
 
             return result;
         }
-<<<<<<< Updated upstream
-=======
 
          [HttpGet]
         public ActionResult ViewCartItems()
@@ -211,8 +203,6 @@ namespace PosEcommerce.Controllers
 
             return result;
         }
->>>>>>> Stashed changes
-
 
 
     }
