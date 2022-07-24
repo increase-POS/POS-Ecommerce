@@ -112,10 +112,10 @@
                         <button type="button" class="btn btn-primary mb-3" id="add-cart" title="@Global.resourcemanager.GetString("AddtoCart").ToString()" @*onclick="addToCart(@Model.itemId)"*@><i class="fa fa-shopping-cart pl-2"></i>@Global.resourcemanager.GetString("AddtoCart").ToString()</button>
 
                         <div class="alert alert-danger" role="alert" style="display: none;">
-                            This is a danger alert—check it out!
+                            @Global.resourcemanager.GetString("ZeroQuantityAlert").ToString()
                         </div>
                         <div class="alert alert-success" role="alert" style="display: none;">
-                            This is a success alert—check it out!
+                            @Global.resourcemanager.GetString("SuccessAlert").ToString()
                         </div>
                     </form>  
                     <hr>
@@ -152,7 +152,7 @@
      
 
          
-            function addToCart(_itemId) {
+            @*function addToCart(_itemId) {
                 var _quantity = $('#quantity').val();
                 if (_quantity == "0")
                     displayAlert();
@@ -183,7 +183,7 @@
             function displayAlert(e) {
                 e.preventDefault();
                 $(this).fadeIn(300).delay(2000).fadeOut(400);
-            }
+            }*@
 
             var itemId =@ViewBag.item.itemId;
     

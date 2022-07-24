@@ -92,8 +92,10 @@
 
 
 
-                                    <a onclick="addToCart(@rowitem.itemId)">
+                                    <a @*onclick="addToCart(@rowitem.itemId)"*@>
+                                        
                                         <div class="add-to-cart" title="@Global.resourcemanager.GetString("AddtoCart").ToString()">
+                                            <input type="hidden" value="@rowitem.itemId" />
                                             <i class="fa fa-shopping-cart"></i>
                                         </div>
                                     </a>
@@ -156,8 +158,8 @@
 
 
 
-<script type="text/javascript">
-
+@*<script type="text/javascript">
+       
         function addToCart(_itemId) {
 
             $.ajax({
@@ -177,4 +179,4 @@
             });
         }
 
-</script>
+</script>*@

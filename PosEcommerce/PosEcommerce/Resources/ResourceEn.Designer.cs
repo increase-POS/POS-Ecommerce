@@ -745,6 +745,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation done successfully.
+        /// </summary>
+        internal static string SuccessAlert {
+            get {
+                return ResourceManager.GetString("SuccessAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Support.
         /// </summary>
         internal static string Support {
@@ -822,6 +831,15 @@ namespace PosEcommerce.Resources {
         internal static string Worthy {
             get {
                 return ResourceManager.GetString("Worthy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity can&apos;t be zero.
+        /// </summary>
+        internal static string ZeroQuantityAlert {
+            get {
+                return ResourceManager.GetString("ZeroQuantityAlert", resourceCulture);
             }
         }
     }

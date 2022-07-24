@@ -131,9 +131,6 @@ $(document).ready(function(){
 
         if ($('#quantity').val() > 0) {
             var _quantity = $('#quantity').val();
-            if (_quantity == "0")
-                displayAlert();
-            else {
                 $.ajax({
                     url: '/Cart/AddWithQuantity',
                     data: JSON.stringify({
@@ -153,7 +150,6 @@ $(document).ready(function(){
                         alert('oops, something bad happened');
                     }
                 });
-            }
 
 
 
@@ -161,6 +157,29 @@ $(document).ready(function(){
             $('.alert-danger').fadeIn(300).delay(2000).fadeOut(400);
         }
     });
+
+
+    $('.add-to-cart').click(function (e) {
+        e.preventDefault;
+        var id = $(this).children(":first").val();
+
+        $.ajax({
+            url: '/Cart/Add',
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ itemId: id }),
+            dataType: 'json',
+            async: true,
+            success: function (result) {
+                $('#span_cart_count').show();
+                $('#span_cart_count').html(result.cartCount);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('oops, something bad happened');
+            }
+        });
+    });
+
         function toggleDropdown (e) {
           const _d = $(e.target).closest('.dropdown'),
             _m = $('.dropdown-menu', _d);

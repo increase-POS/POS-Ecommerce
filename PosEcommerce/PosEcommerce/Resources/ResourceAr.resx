@@ -372,4 +372,10 @@
   <data name="ViewDetails" xml:space="preserve">
     <value>عرض التفاصيل</value>
   </data>
+  <data name="SuccessAlert" xml:space="preserve">
+    <value>تمت العملية بنجاح</value>
+  </data>
+  <data name="ZeroQuantityAlert" xml:space="preserve">
+    <value>الكمية لا يمكن أن تكون صفر</value>
+  </data>
 </root>
