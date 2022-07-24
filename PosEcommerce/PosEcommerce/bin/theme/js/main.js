@@ -130,8 +130,6 @@ $(document).ready(function(){
 
 
         if ($('#quantity').val() > 0) {
-            var _quantity = $('#quantity').val();
-
 
             var transItem = new Object();//dynamically fill model value with different model entity
             transItem.itemId = itemId;
@@ -141,8 +139,6 @@ $(document).ready(function(){
             var i = 0;
             $(".sel-prop  option:selected").each(function () {
 
-                alert(this.text + ' ' + this.value);
-
                 if ($(this).has('option:selected')) {
                     var b = { itemPropId: this.value, propValue: this.text };
                     transItem.propsValues[i] = b;
@@ -151,7 +147,7 @@ $(document).ready(function(){
             });
 
                 $.ajax({
-                    url: '/Cart/AddWithQuantity',
+                    url: path+'/Cart/AddWithQuantity',
                     //data: JSON.stringify({
                     //    itemId: id,
                     //    quantity: _quantity
@@ -184,7 +180,7 @@ $(document).ready(function(){
         var id = $(this).children(":first").val();
 
         $.ajax({
-            url: '/Cart/Add',
+            url: path +'/Cart/Add',
             type: "POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ itemId: id }),

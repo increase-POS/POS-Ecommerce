@@ -82,5 +82,23 @@ namespace PosEcommerce.Controllers
             }
 
         }
+        public string GetBaseUrl(HttpRequestBase request)
+        {
+          //  var request = HttpContext.Request;
+            var appUrl = HttpRuntime.AppDomainAppVirtualPath;
+            if (appUrl != "/")
+                appUrl = "/" + appUrl;
+            var baseUrl = string.Format("{0}://{1}{2}", request.Url.Scheme, request.Url.Authority, appUrl);
+            var uri = new Uri(baseUrl);
+            string secondPart = uri.LocalPath;
+            secondPart = secondPart.TrimStart('/').TrimStart('/');
+
+            if (secondPart != "")
+            {
+                secondPart = "/" + secondPart;
+            }
+
+            return secondPart;
+        }
     }
 }

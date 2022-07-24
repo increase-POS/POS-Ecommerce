@@ -38,6 +38,7 @@ namespace PosEcommerce.Controllers
               //  Session["lang"] = "en";
             }
             sc.checkLang(Session["lang"].ToString());
+            ViewBag.path = sc.GetBaseUrl(HttpContext.Request);
             #endregion
             if (page == null || page == 0)
             {

@@ -7,6 +7,7 @@ using PosEcommerce.Models;
 using System.Threading.Tasks;
 using System.Resources;
 using System.Reflection;
+using System.Text.RegularExpressions;
 namespace PosEcommerce.Controllers
 {
     public class ItemController : Controller
@@ -16,6 +17,8 @@ namespace PosEcommerce.Controllers
         {
             try
             {
+             
+                
                 #region sesion
                 SettingController sc = new SettingController();
                 List<SettingModel> settingList = new List<SettingModel>();
@@ -37,6 +40,7 @@ namespace PosEcommerce.Controllers
                     //  Session["lang"] = "en";
                 }
                 sc.checkLang(Session["lang"].ToString());
+                ViewBag.path = sc.GetBaseUrl( HttpContext.Request);
                 #endregion
                 ItemModel item = new ItemModel();
                 CategoryModel categorymodel = new CategoryModel();
@@ -74,10 +78,9 @@ namespace PosEcommerce.Controllers
             }
           
         }
+
+
+
         
-
-
-
-
     }
 }

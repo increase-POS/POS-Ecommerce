@@ -78,12 +78,12 @@ namespace PosEcommerce.Controllers
                     price = basicPrice;
 
                 List<itemsTransProp> itemsTransProp = new List <itemsTransProp>();
-                foreach(var ip in item.ItemsProps)
+                foreach(var ip in item.Properties)
                 {
                     itemsTransProp.Add(new itemsTransProp()
                     {
-                        itemPropId = ip.itemPropId,
-                        name = ip.propValue,
+                        itemPropId = ip.propertyId,
+                        name = ip.name,
 
                     });
                 }
@@ -167,12 +167,12 @@ namespace PosEcommerce.Controllers
 
 
                 List<itemsTransProp> itemsTransProp = new List<itemsTransProp>();
-                foreach (var ip in item.ItemsProps)
+                foreach (var ip in item.Properties)
                 {
                     itemsTransProp.Add(new itemsTransProp()
                     {
-                        itemPropId = ip.itemPropId,
-                        name = ip.propValue,
+                        itemPropId = ip.propertyId,
+                        name = ip.name,
 
                     });
                 }

@@ -147,7 +147,7 @@ $(document).ready(function(){
             });
 
                 $.ajax({
-                    url: '/Cart/AddWithQuantity',
+                    url: path+'/Cart/AddWithQuantity',
                     //data: JSON.stringify({
                     //    itemId: id,
                     //    quantity: _quantity
@@ -180,7 +180,7 @@ $(document).ready(function(){
         var id = $(this).children(":first").val();
 
         $.ajax({
-            url: '/Cart/Add',
+            url: path +'/Cart/Add',
             type: "POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ itemId: id }),
