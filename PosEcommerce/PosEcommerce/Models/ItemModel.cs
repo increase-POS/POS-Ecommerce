@@ -53,7 +53,7 @@ namespace PosEcommerce.Models
         public List<ItemUnitModel> ItemUnitList { get; set; }
         public Nullable<decimal> disPrice { get; set; }
 
-        public List<itemsProp> ItemsProps { get; set; }
+        public List<Property> Properties { get; set; }
         #endregion
 
 
@@ -150,7 +150,15 @@ namespace PosEcommerce.Models
         #endregion
     }
 
-    public class itemsProp
+    public class Property
+    {
+        public int propertyId { get; set; }
+        public string name { get; set; }
+
+        public List<ItemProps> ItemPropValues { get; set; }
+
+    }
+    public class ItemProps
     {
         public int itemPropId { get; set; }
         public Nullable<int> propertyItemId { get; set; }
@@ -158,6 +166,7 @@ namespace PosEcommerce.Models
         public Nullable<int> isActive { get; set; }
         public string propValue { get; set; }
         public string propName { get; set; }
+        public Nullable<short> isDefault { get; set; }
         public Nullable<System.DateTime> createDate { get; set; }
         public Nullable<System.DateTime> updateDate { get; set; }
         public Nullable<int> createUserId { get; set; }

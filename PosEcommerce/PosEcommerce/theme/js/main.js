@@ -130,13 +130,29 @@ $(document).ready(function(){
 
 
         if ($('#quantity').val() > 0) {
-            var _quantity = $('#quantity').val();
+
+            var transItem = new Object();//dynamically fill model value with different model entity
+            transItem.itemId = itemId;
+            transItem.quantity = $('#quantity').val();
+            transItem.propsValues =[];
+
+            var i = 0;
+            $(".sel-prop  option:selected").each(function () {
+
+                if ($(this).has('option:selected')) {
+                    var b = { itemPropId: this.value, propValue: this.text };
+                    transItem.propsValues[i] = b;
+                    i++;
+                }
+            });
+
                 $.ajax({
                     url: '/Cart/AddWithQuantity',
-                    data: JSON.stringify({
-                        itemId: id,
-                        quantity: _quantity
-                    }),
+                    //data: JSON.stringify({
+                    //    itemId: id,
+                    //    quantity: _quantity
+                    //}),
+                    data: JSON.stringify(transItem),
                     type: "POST",
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",

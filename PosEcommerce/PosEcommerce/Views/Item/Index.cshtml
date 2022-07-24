@@ -52,43 +52,33 @@
                     <h3>@ViewBag.item.name</h3>
                     <p class="product-features">@ViewBag.item.details</p>
                     <hr>
-                    <form action="">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1" class="font-weight-bold">Color</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>White</option>
-                                <option>Red</option>
-                                <option>Blue</option>
-                                <option>Green</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1" class="font-weight-bold">Size</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>S</option>
-                                <option>M</option>
-                                <option>Xl</option>
-                                <option>XXL</option>
-                            </select>
-                        </div>
-                        <p class="price">
-                            <span class="title">@Global.resourcemanager.GetString("price").ToString(): </span>
-                            @if (@ViewBag.item.isOffer == 1)
-                            {
-                                <span id="price" class="now" data-content="@ViewBag.item.disPrice">@ViewBag.item.disPrice</span><span class="now"> @Session["currency"]</span>
-                                <span class="before">@ViewBag.item.price  @Session["currency"]</span>
-                            }
-                            else
-                            {
+                    <form id="frm-add-cart" action="">
+                        @foreach (var rowitem in Model.Properties)
+                        {
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1" class="font-weight-bold">@rowitem.name</label>
+                                @Html.DropDownListFor(m => rowitem, new SelectList(rowitem.ItemPropValues, "itemPropId", "propValue"),string.Empty, new { @class = "form-control sel-prop", Id = "itemPropId" })
 
-                                <span class="now" id="price" data-content="@ViewBag.item.price">@ViewBag.item.price</span> <span class="now"> @Session["currency"]</span>
-                            }
-                        </p>
+                            </div>
+                        }
+                           
+                            <p class="price">
+                                <span class="title">@Global.resourcemanager.GetString("price").ToString(): </span>
+                                @if (@ViewBag.item.isOffer == 1)
+                                {
+                                    <span id="price" class="now" data-content="@ViewBag.item.disPrice">@ViewBag.item.disPrice</span><span class="now"> @Session["currency"]</span>
+                                    <span class="before">@ViewBag.item.price  @Session["currency"]</span>
+                                }
+                                else
+                                {
 
-                        <div class="qty my-3">
-                            <div class="row">
-                                <div class="col-4">
-                                    <form action="">
+                                    <span class="now" id="price" data-content="@ViewBag.item.price">@ViewBag.item.price</span> <span class="now"> @Session["currency"]</span>
+                                }
+                            </p>
+
+                            <div class="qty my-3">
+                                <div class="row">
+                                    <div class="col-4">
                                         <div class="input-group">
                                             <span class="input-group-btn">
                                                 <button type="button" class="quantity-left-minus btn btn-dark btn-number" data-type="minus" data-field="">
@@ -102,22 +92,21 @@
                                                 </button>
                                             </span>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <p class="total"><span>TOTAL: </span><span id="total"></span>@Session["currency"]</p>
+                            <p class="total"><span>TOTAL: </span><span id="total"></span>@Session["currency"]</p>
 
-                        <button type="button" class="btn btn-primary mb-3" id="add-cart" title="@Global.resourcemanager.GetString("AddtoCart").ToString()" @*onclick="addToCart(@Model.itemId)"*@><i class="fa fa-shopping-cart pl-2"></i>@Global.resourcemanager.GetString("AddtoCart").ToString()</button>
+                            <button type="button" class="btn btn-primary mb-3" id="add-cart" title="@Global.resourcemanager.GetString("AddtoCart").ToString()" @*onclick="addToCart(@Model.itemId)"*@><i class="fa fa-shopping-cart pl-2"></i>@Global.resourcemanager.GetString("AddtoCart").ToString()</button>
 
-                        <div class="alert alert-danger" role="alert" style="display: none;">
-                            @Global.resourcemanager.GetString("ZeroQuantityAlert").ToString()
-                        </div>
-                        <div class="alert alert-success" role="alert" style="display: none;">
-                            @Global.resourcemanager.GetString("SuccessAlert").ToString()
-                        </div>
-                    </form>  
+                            <div class="alert alert-danger" role="alert" style="display: none;">
+                                @Global.resourcemanager.GetString("ZeroQuantityAlert").ToString()
+                            </div>
+                            <div class="alert alert-success" role="alert" style="display: none;">
+                                @Global.resourcemanager.GetString("SuccessAlert").ToString()
+                            </div>
+                        </form>  
                     <hr>
                     <div class="mt-3">
                         <a class="btn btn-dark btn-block" href="@Url.Action("CartView", "Cart")" title="@Global.resourcemanager.GetString("ViewCart").ToString()">@Global.resourcemanager.GetString("ViewCart").ToString()</a>

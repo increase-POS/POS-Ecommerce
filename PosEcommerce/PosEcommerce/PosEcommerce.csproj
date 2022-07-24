@@ -269,6 +269,7 @@
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Models\APIResult.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ItemTransferModel.cs" />
     <Compile Include="Models\ItemUnitModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
