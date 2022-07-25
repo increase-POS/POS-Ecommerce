@@ -30,101 +30,122 @@ namespace PosEcommerce.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(string itemId)
         {
-            CategoryController cc = new CategoryController();
+            //CategoryController cc = new CategoryController();
 
-            ItemModel item = new ItemModel();
-            item = await item.GetItemByID(long.Parse(itemId));
+            //ItemModel item = new ItemModel();
+            //item = await item.GetItemByID(long.Parse(itemId));
 
-            List<ItemTransferModel> li;
-            ItemTransferModel itemFound=null;
+            //List<ItemTransferModel> li;
+            //ItemTransferModel itemFound=null;
 
-            if (Session["cart"] == null)
-            {
-                li = new List<ItemTransferModel>();
+            //if (Session["cart"] == null)
+            //{
+            //    li = new List<ItemTransferModel>();
 
-                Session["count"] = 1;
+            //    Session["count"] = 1;
 
-            }
-            else
-            {
-                li = (List<ItemTransferModel>)Session["cart"];
+            //}
+            //else
+            //{
+            //    li = (List<ItemTransferModel>)Session["cart"];
 
-                itemFound = li.Where(x => x.itemUnitId == item.ItemUnitList.FirstOrDefault().itemUnitId).FirstOrDefault();
-                if(itemFound == null)
-                    Session["count"] = Convert.ToInt32(Session["count"]) + 1;
+            //    itemFound = li.Where(x => x.itemUnitId == item.ItemUnitList.FirstOrDefault().itemUnitId).FirstOrDefault();
+            //    if(itemFound == null)
+            //        Session["count"] = Convert.ToInt32(Session["count"]) + 1;
 
-            }
+            //}
 
 
-            if (itemFound == null)
-            {
-                decimal basicPrice = 0;
-                decimal price = 0;
+            //if (itemFound == null)
+            //{
+            //    decimal basicPrice = 0;
+            //    decimal price = 0;
 
-                int offerId = 0;
-                string discountType = "1";
-                decimal discountValue = 0;
+            //    int offerId = 0;
+            //    string discountType = "1";
+            //    decimal discountValue = 0;
 
-                basicPrice = (decimal)item.ItemUnitList.FirstOrDefault().price;
-                if (item.ItemUnitList.FirstOrDefault().offerId != null && item.ItemUnitList.FirstOrDefault().offerId != 0)
-                {
-                    offerId = (int)item.ItemUnitList.FirstOrDefault().offerId;
-                    discountType = item.ItemUnitList.FirstOrDefault().discountType;
-                    discountValue = (decimal)item.ItemUnitList.FirstOrDefault().discountValue;
+            //    basicPrice = (decimal)item.ItemUnitList.FirstOrDefault().price;
+            //    if (item.ItemUnitList.FirstOrDefault().offerId != null && item.ItemUnitList.FirstOrDefault().offerId != 0)
+            //    {
+            //        offerId = (int)item.ItemUnitList.FirstOrDefault().offerId;
+            //        discountType = item.ItemUnitList.FirstOrDefault().discountType;
+            //        discountValue = (decimal)item.ItemUnitList.FirstOrDefault().discountValue;
 
-                    price = cc.GetdiscountPrice(item.ItemUnitList.FirstOrDefault().discountType, item.ItemUnitList.FirstOrDefault().discountValue, item.ItemUnitList.FirstOrDefault().price);
-                }
-                else
-                    price = basicPrice;
+            //        price = cc.GetdiscountPrice(item.ItemUnitList.FirstOrDefault().discountType, item.ItemUnitList.FirstOrDefault().discountValue, item.ItemUnitList.FirstOrDefault().price);
+            //    }
+            //    else
+            //        price = basicPrice;
 
-                List<itemsTransProp> itemsTransProp = new List <itemsTransProp>();
-                foreach(var ip in item.Properties)
-                {
-                    itemsTransProp.Add(new itemsTransProp()
-                    {
-                        itemPropId = ip.propertyId,
-                        name = ip.name,
 
-                    });
-                }
+            //    #region default item properties
+            //    List<itemsTransProp> itemsTransProp = new List <itemsTransProp>();
+            //    foreach(var p in item.Properties)
+            //    {
+            //        foreach (var ip in p.ItemPropValues)
+            //        {
+            //            itemsTransProp.Add(new itemsTransProp()
+            //            {
+            //                itemPropId = ip.itemPropId,
+            //                name = ip.propValue,
 
-                li.Add(new ItemTransferModel()
-                {
-                    itemId = item.itemId,
-                    itemUnitId = item.ItemUnitList.FirstOrDefault().itemUnitId,
-                    price = price,
-                    itemUnitPrice = basicPrice,
-                    quantity = 1,
-                    offerId = offerId,
-                    offerValue = discountValue,
-                    offerType = decimal.Parse(discountType),
-                    image = item.image,
-                    itemsTransProp = itemsTransProp,
-                });
-            }
-            else
-                itemFound.quantity++;
+            //            });
+            //        }
+            //    }
+            //    #endregion
 
-            Session["cart"] = li;
+            //    li.Add(new ItemTransferModel()
+            //    {
+            //        itemId = item.itemId,
+            //        itemUnitId = item.ItemUnitList.FirstOrDefault().itemUnitId,
+            //        price = price,
+            //        itemUnitPrice = basicPrice,
+            //        quantity = 1,
+            //        offerId = offerId,
+            //        offerValue = discountValue,
+            //        offerType = decimal.Parse(discountType),
+            //        image = item.image,
+            //        itemsTransProp = itemsTransProp,
+            //    });
+            //}
+            //else
+            //    itemFound.quantity++;
+
+            //Session["cart"] = li;
+
+            int _cartCount = await AddItemToCart(long.Parse(itemId), 1,null);
 
             JsonResult result = this.Json(new
             {
-                cartCount = li.Count(),
+                cartCount = _cartCount,
             }, JsonRequestBehavior.AllowGet);
 
             return result;
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddWithQuantity(string itemId, string quantity)
+        //public async Task<ActionResult> AddWithQuantity(string itemId, string quantity)
+        public async Task<ActionResult> AddWithQuantity(CartItem cItem)
+        {
+
+           int _cartCount = await AddItemToCart(cItem.itemId, cItem.quantity,cItem.propsValues);
+            JsonResult result = this.Json(new
+            {
+                cartCount = _cartCount,
+            }, JsonRequestBehavior.AllowGet);
+
+            return result;
+        }
+        private async Task<int> AddItemToCart(long itemId, int quantity,List<ItemProps> itemProps)
         {
             CategoryController cc = new CategoryController();
 
             ItemModel item = new ItemModel();
-            item = await item.GetItemByID(long.Parse(itemId));
+            item = await item.GetItemByID(itemId);
 
             List<ItemTransferModel> li;
-            ItemTransferModel itemFound=null;
+            List<ItemTransferModel> cartItems;
+            ItemTransferModel itemFound = null;
 
             if (Session["cart"] == null)
             {
@@ -137,8 +158,13 @@ namespace PosEcommerce.Controllers
             {
                 li = (List<ItemTransferModel>)Session["cart"];
 
-                itemFound = li.Where(x => x.itemUnitId == item.ItemUnitList.FirstOrDefault().itemUnitId).FirstOrDefault();
-                if(itemFound == null)
+                cartItems = li.Where(x => x.itemUnitId == item.ItemUnitList.FirstOrDefault().itemUnitId).ToList();
+                if (!cartItems.Count.Equals(0))
+                {
+                    //var joinedProp = 
+                    itemFound = li.Where(x => x.itemUnitId == item.ItemUnitList.FirstOrDefault().itemUnitId).FirstOrDefault();
+                }
+                if (itemFound == null)
                     Session["count"] = Convert.ToInt32(Session["count"]) + 1;
 
             }
@@ -166,16 +192,18 @@ namespace PosEcommerce.Controllers
                     price = basicPrice;
 
 
+                #region default item properties
                 List<itemsTransProp> itemsTransProp = new List<itemsTransProp>();
-                foreach (var ip in item.Properties)
+                foreach (var p in itemProps)
                 {
                     itemsTransProp.Add(new itemsTransProp()
                     {
-                        itemPropId = ip.propertyId,
-                        name = ip.name,
+                        itemPropId = p.itemPropId,
+                        name = p.propValue,
 
                     });
                 }
+                #endregion
 
                 li.Add(new ItemTransferModel()
                 {
@@ -183,7 +211,7 @@ namespace PosEcommerce.Controllers
                     itemUnitId = item.ItemUnitList.FirstOrDefault().itemUnitId,
                     price = price,
                     itemUnitPrice = basicPrice,
-                    quantity = int.Parse(quantity),
+                    quantity = quantity,
                     offerId = offerId,
                     offerValue = discountValue,
                     offerType = decimal.Parse(discountType),
@@ -191,17 +219,12 @@ namespace PosEcommerce.Controllers
                 });
             }
             else
-                itemFound.quantity += int.Parse(quantity);
+                itemFound.quantity += quantity;
 
 
             Session["cart"] = li;
 
-            JsonResult result = this.Json(new
-            {
-                cartCount = li.Count(),
-            }, JsonRequestBehavior.AllowGet);
-
-            return result;
+            return li.Count();
         }
 
          [HttpGet]
