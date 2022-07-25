@@ -34,7 +34,7 @@ $(document).ready(function(){
                   dataType: "json",
                   success: function (data) {
                       alert();
-                      $.each(data, function (index, item) {
+                      $.each(data.cartItems, function (index, item) {
                           divCartItemsContent +=
                               ` <div class="card my-3 item">
                 <div class="cancel-item"><i class="fa fa-close fa-sm"></i></div>
@@ -45,16 +45,16 @@ $(document).ready(function(){
                     <div class="col-8">
                         <div class="card-body">
                             <h5 class="card-title">${item.name}</h5>
-                            <p><span>${Global.resourcemanager.GetString("Quantity").ToString()}:</span> ${item.quantity}</p>
+                            <p><span>QTY:</span> ${item.quantity}</p>
                         </div>
                     </div>
                 </div>
             </div>`;
-
+                          alert(divCartItemsContent);
                       });
-                      $('#div_cart_items').html(
-                          divCartItemsContent
-                      );
+
+                      $('#sp-cart-count').html(data.cartCount);
+                      $('#div_cart_items').html(divCartItemsContent);
                   },
                   failure: function () {
                       alert("fail");

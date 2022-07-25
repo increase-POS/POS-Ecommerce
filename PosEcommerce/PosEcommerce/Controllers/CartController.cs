@@ -193,20 +193,25 @@ namespace PosEcommerce.Controllers
 
                 #region default item properties
                 List<itemsTransProp> itemsTransProp = new List<itemsTransProp>();
-                foreach (var p in itemProps)
-                {
-                    itemsTransProp.Add(new itemsTransProp()
-                    {
-                        itemPropId = p.itemPropId,
-                        name = p.name,
 
-                    });
+                if (itemProps != null)
+                {
+                    foreach (var p in itemProps)
+                    {
+                        itemsTransProp.Add(new itemsTransProp()
+                        {
+                            itemPropId = p.itemPropId,
+                            name = p.name,
+
+                        });
+                    }
                 }
                 #endregion
 
                 li.Add(new ItemTransferModel()
                 {
                     itemId = item.itemId,
+                    itemName = item.name,
                     itemUnitId = item.ItemUnitList.FirstOrDefault().itemUnitId,
                     price = price,
                     itemUnitPrice = basicPrice,
@@ -231,7 +236,10 @@ namespace PosEcommerce.Controllers
         {
             foreach (var t in cartItems)
             {
-                if (t.itemsTransProp != null)
+                if (t.itemsTransProp.Count.Equals(0) && list2 is null)
+                    return t;
+
+                if (t.itemsTransProp != null && !t.itemsTransProp.Count.Equals(0))
                 {
                     var eq = (from x in t.itemsTransProp
                               join y in list2 on x.itemPropId equals y.itemPropId
@@ -267,6 +275,7 @@ namespace PosEcommerce.Controllers
             JsonResult result = this.Json(new
             {
                 cartItems = li,
+                cartCount = li.Count()+ " "+ Global.resourcemanager.GetString("items").ToString(),
             }, JsonRequestBehavior.AllowGet);
 
             return result;

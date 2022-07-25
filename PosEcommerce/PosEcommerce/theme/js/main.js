@@ -140,9 +140,11 @@ $(document).ready(function(){
             $(".sel-prop  option:selected").each(function () {
 
                 if ($(this).has('option:selected')) {
-                    var b = { itemPropId: this.value, name: this.text };
-                    transItem.propsValues[i] = b;
-                    i++;
+                    if (this.text) {
+                        var b = { itemPropId: this.value, name: this.text };
+                        transItem.propsValues[i] = b;
+                        i++;
+                    }
                 }
             });
 
