@@ -67,7 +67,7 @@
                                 <div class="img-block text-center">
                                     @if (rowitem.image != "" && rowitem.image != null)
                                     {
-                                        <img src="@Url.Content(Global.APIUriserver + "images/item/" + rowitem.image.ToString())" class="block" alt="">
+                                        <img src="@Url.Content(Global.APIUriserver + "images/item/" + rowitem.image.ToString())" class="block" alt="" onError="this.src='@Url.Content(ViewBag.path+Global.ItemFolder + "default.png")';">
                                     }
                                     else
                                     {

@@ -41,6 +41,7 @@ namespace PosEcommerce.Controllers
                 }
                 sc.checkLang(Session["lang"].ToString());
                 ViewBag.path = sc.GetBaseUrl( HttpContext.Request);
+                ViewBag.currentp = "products";
                 #endregion
                 ItemModel item = new ItemModel();
                 CategoryModel categorymodel = new CategoryModel();

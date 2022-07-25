@@ -19,16 +19,32 @@
     <nav class="navbar navbar-nav navbar-expand-md navbar-light bg-light justify-content-center">
         <div class="collapse navbar-collapse mr-0 d-none d-md-block">
             <ul class="navbar-nav ml-3">
-                <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("Index", "Home")">@Global.resourcemanager.GetString("Home").ToString()<span class="sr-only">(current)</span></a>
+                <li class="nav-item 
+                    @if (@ViewBag.currentp == "home") {
+                        <text>active</text>
+                    }
+                    ">
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">@Global.resourcemanager.GetString("Home").ToString()<span class="sr-only"> (current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item
+                      @if (@ViewBag.currentp == "products") {
+                        <text>active</text>
+                    }
+                    ">
                     <a class="nav-link" href="@Url.Action("Index", "Category")">@Global.resourcemanager.GetString("Products").ToString()</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item
+                       @if (@ViewBag.currentp == "about") {
+                        <text>active</text>
+                    }
+                    ">
                     <a class="nav-link" href="@Url.Action("About","Home")">@Global.resourcemanager.GetString("AboutUs").ToString()</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item 
+                        @if (@ViewBag.currentp == "contact") {
+                        <text>active</text>
+                    }
+                    ">
                     <a class="nav-link" href="@Url.Action("Contact", "Home")">@Global.resourcemanager.GetString("contactUs").ToString()</a>
                 </li>
                 <li>
