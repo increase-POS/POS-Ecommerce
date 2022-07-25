@@ -136,7 +136,7 @@ namespace PosEcommerce.Controllers
 
             return result;
         }
-        private async Task<int> AddItemToCart(long itemId, int quantity,List<ItemProps> itemProps)
+        private async Task<int> AddItemToCart(long itemId, int quantity,List<itemsTransProp> itemProps)
         {
             CategoryController cc = new CategoryController();
 
@@ -144,7 +144,7 @@ namespace PosEcommerce.Controllers
             item = await item.GetItemByID(itemId);
 
             List<ItemTransferModel> li;
-            List<ItemTransferModel> cartItems;
+            List<ItemTransferModel> cartItems = new List<ItemTransferModel>() ;
             ItemTransferModel itemFound = null;
 
             if (Session["cart"] == null)
@@ -161,8 +161,7 @@ namespace PosEcommerce.Controllers
                 cartItems = li.Where(x => x.itemUnitId == item.ItemUnitList.FirstOrDefault().itemUnitId).ToList();
                 if (!cartItems.Count.Equals(0))
                 {
-                    //var joinedProp = 
-                    itemFound = li.Where(x => x.itemUnitId == item.ItemUnitList.FirstOrDefault().itemUnitId).FirstOrDefault();
+                    itemFound = checkItemProp(cartItems,itemProps);
                 }
                 if (itemFound == null)
                     Session["count"] = Convert.ToInt32(Session["count"]) + 1;
@@ -199,7 +198,7 @@ namespace PosEcommerce.Controllers
                     itemsTransProp.Add(new itemsTransProp()
                     {
                         itemPropId = p.itemPropId,
-                        name = p.propValue,
+                        name = p.name,
 
                     });
                 }
@@ -216,6 +215,7 @@ namespace PosEcommerce.Controllers
                     offerValue = discountValue,
                     offerType = decimal.Parse(discountType),
                     image = item.image,
+                    itemsTransProp = itemsTransProp,
                 });
             }
             else
@@ -227,7 +227,25 @@ namespace PosEcommerce.Controllers
             return li.Count();
         }
 
-         [HttpGet]
+        private ItemTransferModel checkItemProp(List<ItemTransferModel> cartItems, List<itemsTransProp> list2)
+        {
+            foreach (var t in cartItems)
+            {
+                if (t.itemsTransProp != null)
+                {
+                    var eq = (from x in t.itemsTransProp
+                              join y in list2 on x.itemPropId equals y.itemPropId
+                              select x).ToList();
+
+                    if (eq.Count() == list2.Count())
+                        return t;
+                }
+            }
+            return null;
+        }
+
+
+        [HttpGet]
         public ActionResult ViewCartItems()
         {
             CategoryController cc = new CategoryController();

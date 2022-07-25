@@ -11,7 +11,7 @@ namespace PosEcommerce.Models
        public long itemId { get; set; }
        public int quantity { get; set; }
 
-        public List<ItemProps> propsValues { get; set; }
+        public List<itemsTransProp> propsValues { get; set; }
 
     }
 }
