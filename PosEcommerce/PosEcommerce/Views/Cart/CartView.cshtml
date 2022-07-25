@@ -1,4 +1,5 @@
 ﻿@using PosEcommerce.Models;
+@using PosEcommerce.Helper;
 @{
     ViewBag.Title =@Global.resourcemanager.GetString("ShoppingCart").ToString();
 }
@@ -26,10 +27,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach (var item in ViewBag.cartItems)
+                            {
                             <tr>
                                 <td class="text-center px-0"><a href="#"><i class="fa fa-close fa-sm text-danger"></i></a></td>
-                                <td>Datalogic Datalogic</td>
-                                <td>15,0.00</td>
+                                <td>@Html.itemWithPropDesc((ItemTransferModel) item)</td>
+                                <td>@item.price  @Session["currency"]</td>
                                 <td>
                                     <form action="">
                                         <div class="input-group">
@@ -38,7 +41,7 @@
                                                     <i class="fa fa-minus"></i>
                                                 </button>
                                             </span>
-                                            <input type="text" name="quantity1" class="form-control input-number text-center py-0" value="0" min="1" max="100" style="width: 20px;">
+                                            <input type="text" name="quantity1" class="form-control input-number text-center py-0" value="@item.quantity" min="1" max="100" style="width: 20px;">
                                             <span class="input-group-btn">
                                                 <button type="button" class="quantity-right-plus btn btn-sm btn-light btn-number" data-type="plus" data-field="">
                                                     <i class="fa fa-plus"></i>
@@ -47,54 +50,10 @@
                                         </div>
                                     </form>
                                 </td>
-                                <td>30,0.00</td>
+                                <td>@Html.multiplyValues((decimal)item.price,(int)item.quantity)</td>
                             </tr>
-                            <tr>
-                                <td class="text-center px-0"><a href="#"><i class="fa fa-close fa-sm text-danger"></i></a></td>
-                                <td>Datalogic Datalogic</td>
-                                <td>15,0.00</td>
-                                <td>
-                                    <form action="">
-                                        <div class="input-group">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="quantity-left-minus btn btn-sm btn-light btn-number" data-type="minus" data-field="">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                            </span>
-                                            <input type="text" name="quantity2" class="form-control input-number text-center py-0" value="0" min="1" max="100" style="width: 20px;">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="quantity-right-plus btn btn-sm btn-light btn-number" data-type="plus" data-field="">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </td>
-                                <td>30,0.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center px-0"><a href="#"><i class="fa fa-close fa-sm text-danger"></i></a></td>
-                                <td>Datalogic Datalogic</td>
-                                <td>15,0.00</td>
-                                <td>
-                                    <form action="">
-                                        <div class="input-group">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="quantity-left-minus btn btn-sm btn-light btn-number" data-type="minus" data-field="">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                            </span>
-                                            <input type="text" name="quantity3" class="form-control input-number text-center py-0" value="0" min="1" max="100" style="width: 20px;">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="quantity-right-plus btn btn-sm btn-light btn-number" data-type="plus" data-field="">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </td>
-                                <td>30,0.00</td>
-                            </tr>
+                            }
+                           
                         </tbody>
                     </table>
                 </div>

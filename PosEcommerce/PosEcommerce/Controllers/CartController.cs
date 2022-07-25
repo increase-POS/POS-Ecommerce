@@ -14,10 +14,21 @@ namespace PosEcommerce.Controllers
         public async Task<ActionResult> CartView()
         {
             try
-            { 
-            
+            {
+                List<ItemTransferModel> li;
 
+                if (Session["cart"] == null)
+                {
+                    li = new List<ItemTransferModel>();
 
+                }
+                else
+                {
+                    li = (List<ItemTransferModel>)Session["cart"];
+
+                }
+
+                ViewBag.cartItems = li;
                 return View();
             }
             catch(Exception ex)
@@ -30,89 +41,7 @@ namespace PosEcommerce.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(string itemId)
         {
-            //CategoryController cc = new CategoryController();
-
-            //ItemModel item = new ItemModel();
-            //item = await item.GetItemByID(long.Parse(itemId));
-
-            //List<ItemTransferModel> li;
-            //ItemTransferModel itemFound=null;
-
-            //if (Session["cart"] == null)
-            //{
-            //    li = new List<ItemTransferModel>();
-
-            //    Session["count"] = 1;
-
-            //}
-            //else
-            //{
-            //    li = (List<ItemTransferModel>)Session["cart"];
-
-            //    itemFound = li.Where(x => x.itemUnitId == item.ItemUnitList.FirstOrDefault().itemUnitId).FirstOrDefault();
-            //    if(itemFound == null)
-            //        Session["count"] = Convert.ToInt32(Session["count"]) + 1;
-
-            //}
-
-
-            //if (itemFound == null)
-            //{
-            //    decimal basicPrice = 0;
-            //    decimal price = 0;
-
-            //    int offerId = 0;
-            //    string discountType = "1";
-            //    decimal discountValue = 0;
-
-            //    basicPrice = (decimal)item.ItemUnitList.FirstOrDefault().price;
-            //    if (item.ItemUnitList.FirstOrDefault().offerId != null && item.ItemUnitList.FirstOrDefault().offerId != 0)
-            //    {
-            //        offerId = (int)item.ItemUnitList.FirstOrDefault().offerId;
-            //        discountType = item.ItemUnitList.FirstOrDefault().discountType;
-            //        discountValue = (decimal)item.ItemUnitList.FirstOrDefault().discountValue;
-
-            //        price = cc.GetdiscountPrice(item.ItemUnitList.FirstOrDefault().discountType, item.ItemUnitList.FirstOrDefault().discountValue, item.ItemUnitList.FirstOrDefault().price);
-            //    }
-            //    else
-            //        price = basicPrice;
-
-
-            //    #region default item properties
-            //    List<itemsTransProp> itemsTransProp = new List <itemsTransProp>();
-            //    foreach(var p in item.Properties)
-            //    {
-            //        foreach (var ip in p.ItemPropValues)
-            //        {
-            //            itemsTransProp.Add(new itemsTransProp()
-            //            {
-            //                itemPropId = ip.itemPropId,
-            //                name = ip.propValue,
-
-            //            });
-            //        }
-            //    }
-            //    #endregion
-
-            //    li.Add(new ItemTransferModel()
-            //    {
-            //        itemId = item.itemId,
-            //        itemUnitId = item.ItemUnitList.FirstOrDefault().itemUnitId,
-            //        price = price,
-            //        itemUnitPrice = basicPrice,
-            //        quantity = 1,
-            //        offerId = offerId,
-            //        offerValue = discountValue,
-            //        offerType = decimal.Parse(discountType),
-            //        image = item.image,
-            //        itemsTransProp = itemsTransProp,
-            //    });
-            //}
-            //else
-            //    itemFound.quantity++;
-
-            //Session["cart"] = li;
-
+           
             int _cartCount = await AddItemToCart(long.Parse(itemId), 1,null);
 
             JsonResult result = this.Json(new
@@ -270,11 +199,7 @@ namespace PosEcommerce.Controllers
                 li = (List<ItemTransferModel>)Session["cart"];
               
             }
-            
-            //foreach(var it in li)
-            //{
-            //    it.image = Url.Content(Global.APIUriserver + "images/item/" + it.image);
-            //}
+           
 
             JsonResult result = this.Json(new
             {
