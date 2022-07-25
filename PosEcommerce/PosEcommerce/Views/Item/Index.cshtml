@@ -140,41 +140,6 @@
 
     <script>
      
-
-         
-            @*function addToCart(_itemId) {
-                var _quantity = $('#quantity').val();
-                if (_quantity == "0")
-                    displayAlert();
-                else {
-                    $.ajax({
-                        url: '@Url.Action("AddWithQuantity", "Cart")',
-                        data: JSON.stringify({
-                            itemId: _itemId,
-                            quantity: _quantity
-                        }),
-                        type: "POST",
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        async: true,
-                        success: function (result) {
-                            $('#span_cart_count').show();
-                            $('#span_cart_count').html(result.cartCount);
-                            $('#div-success-alert').fadeIn(300);
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            alert('oops, something bad happened');
-                        }
-                    });
-                }
-
-            }
-
-            function displayAlert(e) {
-                e.preventDefault();
-                $(this).fadeIn(300).delay(2000).fadeOut(400);
-            }*@
-
-            var itemId =@ViewBag.item.itemId;
+     var itemId =@ViewBag.item.itemId;
     var path="@ViewBag.path";
     </script>

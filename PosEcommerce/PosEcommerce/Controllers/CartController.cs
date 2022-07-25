@@ -270,12 +270,18 @@ namespace PosEcommerce.Controllers
                 li = (List<ItemTransferModel>)Session["cart"];
               
             }
-
+            
+            //foreach(var it in li)
+            //{
+            //    it.image = Url.Content(Global.APIUriserver + "images/item/" + it.image);
+            //}
 
             JsonResult result = this.Json(new
             {
                 cartItems = li,
-                cartCount = li.Count()+ " "+ Global.resourcemanager.GetString("items").ToString(),
+                cartCount = li.Count(),
+                cartCountStr = li.Count()+ " "+ Global.resourcemanager.GetString("items").ToString(),
+                imagePath = Url.Content(Global.APIUriserver + "images/item/"),
             }, JsonRequestBehavior.AllowGet);
 
             return result;
