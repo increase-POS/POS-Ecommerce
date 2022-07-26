@@ -1,4 +1,6 @@
 ﻿@using PosEcommerce.Models;
+@using PosEcommerce.CustomeHelper;
+
 @{
     ViewBag.Title = @Global.resourcemanager.GetString("Products").ToString();
 }
@@ -80,14 +82,14 @@
                                     <h6>@rowitem.name</h6>
                                     @if (rowitem.isOffer == 1)
                                     {
-                                        <label class="before d-inline-block">@rowitem.price  @Session["currency"]</label>
+                                        <label class="before d-inline-block">@Html.accuracyFormat((string)rowitem.price.ToString())  @Session["currency"]</label>
 
 
-                                        <label class="d-inline-block">@rowitem.disPrice  @Session["currency"]</label>
+                                        <label class="d-inline-block">@Html.accuracyFormat((string)rowitem.disPrice.ToString())  @Session["currency"]</label>
                                     }
                                     else
                                     {
-                                        <label class="d-inline-block">@rowitem.price  @Session["currency"]</label>
+                                <label class="d-inline-block">@Html.accuracyFormat((string)rowitem.price.ToString())  @Session["currency"]</label>
                                     }
 
 

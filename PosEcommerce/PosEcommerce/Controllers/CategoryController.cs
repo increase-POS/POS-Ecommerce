@@ -29,8 +29,11 @@ namespace PosEcommerce.Controllers
                 Session["com_email"] = settingList.Where(x => x.settingName == "com_email").FirstOrDefault().value;
                 Session["com_mobile"] = settingList.Where(x => x.settingName == "com_mobile").FirstOrDefault().value;
                 Session["com_logo"] = settingList.Where(x => x.settingName == "com_logo").FirstOrDefault().value;
+                Session["accuracy"] = settingList.Where(x => x.settingName == "accuracy").FirstOrDefault().value;
+                Global.accuracy = Session["accuracy"].ToString();
+                Global.currency = Session["currency"].ToString();
                 Session["lang"] = "en";
-              
+            
                 Global.resourcemanager =  new ResourceManager("PosEcommerce.AppResource.ar", Assembly.GetExecutingAssembly());
             }
             else
