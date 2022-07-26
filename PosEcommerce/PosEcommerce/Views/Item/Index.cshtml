@@ -97,7 +97,7 @@
                             </div>
                         </div>
 
-                        <p class="total"><span>TOTAL: </span><span id="total"></span>@Session["currency"]</p>
+                        <p class="total"><span> @Global.resourcemanager.GetString("Total").ToString(): </span><span id="total"></span>@Session["currency"]</p>
 
                         <button type="button" class="btn btn-primary mb-3" id="add-cart" title="@Global.resourcemanager.GetString("AddtoCart").ToString()" @*onclick="addToCart(@Model.itemId)"*@><i class="fa fa-shopping-cart pl-2"></i>@Global.resourcemanager.GetString("AddtoCart").ToString()</button>
 

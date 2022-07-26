@@ -42,13 +42,13 @@ $(document).ready(function(){
 
                           $.each(data.cartItems, function (index, item) {
                               divCartItemsContent +=
-                                  ` <div class="card my-3 item">
+                                  `<div class="card my-3 item">
                                     <div class="cancel-item"><i class="fa fa-close fa-sm"></i></div>
                                     <div class="row no-gutters">
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <img src="${data.imagePath}${item.image}" alt="..." style="width: 100%; height: 100%;">
                                         </div>
-                                        <div class="col-8">
+                                        <div class="col-9">
                                             <div class="card-body">
                                                 <h5 class="card-title">${item.itemName}</h5>
                                                 <p><span>QTY:</span> ${item.quantity}</p>
@@ -84,7 +84,9 @@ $(document).ready(function(){
         });
 
 
-        $('.cart-menu .cart-items .card .cancel-item').click(function(){
+    $('.cart-menu .cart-items .card .cancel-item').click(function (e) {
+        alert();
+        e.preventDefault;
           $(this).parent().remove();
 
           if($(".item") && $(".item").length){
