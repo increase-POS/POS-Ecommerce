@@ -259,6 +259,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="Helper\CustomHelper.cs" />
     <Compile Include="Models\APIResult.cs" />
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\ItemTransferModel.cs" />
     <Compile Include="Models\ItemUnitModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
