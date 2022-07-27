@@ -214,22 +214,31 @@ $(document).ready(function () {
 
         // Stop acting like a button
         e.preventDefault();
-        $('#total').text("");
-        // Get the field name
+      
+
+            $('#total').text("");
+            // Get the field name
 
         var quantity = parseInt($(this).parent().parent().find('input').val());
-        if (isNaN(parseFloat(quantity))) {
-            quantity = 0;
-            $(this).parent().parent().find('input').val(quantity);
-            $('#total').text("0");
+     
+        if (allnumeric(quantity.toString())) {
+            if (isNaN(parseFloat(quantity))) {
+                quantity = 0;
+                $(this).parent().parent().find('input').val(quantity);
+                $('#total').text("0");
 
+            } else {
+                $(this).parent().parent().find('input').val(quantity + 1);
+                var price = parseFloat($('#price').text());
+                var res = (price * (quantity + 1));
+
+                $('#total').text(accuracyconv(res, accuracy));
+            }
         } else {
-            $(this).parent().parent().find('input').val(quantity + 1);
-            var price = parseFloat($('#price').text());
-            var res = (price * (quantity + 1));
-
-            $('#total').text(accuracyconv(res, accuracy));
+            $(this).parent().parent().find('input').val("0");
+            $('#total').text("0");
         }
+        
 
  
 
@@ -243,25 +252,28 @@ $(document).ready(function () {
         var quantity = parseInt($(this).parent().parent().find('input').val());
 
         // If is not undefined
-
-        if (isNaN(parseFloat(quantity))) {
-            quantity = 0;
-            $(this).parent().parent().find('input').val(quantity);
-            $('#total').text("0");
-        } else {
-            //
-            if (quantity > 0) {
-                $(this).parent().parent().find('input').val(quantity - 1);
-                //total
-                var price = parseFloat($('#price').text());
-                var res = (price * (parseFloat(quantity) - 1));
-                $('#total').text(accuracyconv(res, accuracy));
-
-            } else {
+        if (allnumeric(quantity.toString())) {
+            if (isNaN(parseFloat(quantity))) {
+                quantity = 0;
+                $(this).parent().parent().find('input').val(quantity);
                 $('#total').text("0");
-            }
-        }
+            } else {
+                //
+                if (quantity > 0) {
+                    $(this).parent().parent().find('input').val(quantity - 1);
+                    //total
+                    var price = parseFloat($('#price').text());
+                    var res = (price * (parseFloat(quantity) - 1));
+                    $('#total').text(accuracyconv(res, accuracy));
 
+                } else {
+                    $('#total').text("0");
+                }
+            }
+        } else {
+            $(this).parent().parent().find('input').val("0");
+            $('#total').text("0");
+        }
 
     });
 
@@ -296,9 +308,29 @@ $(document).ready(function () {
         return fnum.toString();
 
     };
+    
+    $('#quantity').keyup(function (e) {
+        // Stop acting like a button
+        //e.preventDefault();
+        $('#total').text("");
+        // Get the field name
+        var quantity = parseInt($(this).parent().parent().find('input').val());
+    
+        // If is not undefined
+        if (allnumeric(quantity.toString())) {
+            $(this).parent().parent().find('input').val(quantity);
+            var price = parseFloat($('#price').text());
+            var res = (price * (parseFloat(quantity) ));
+            $('#total').text(accuracyconv(res, accuracy));
+            } else {
+                //
+            $(this).parent().parent().find('input').val("0");
+            $('#total').text("0");
+            }
+         
 
-
-
-
+    });
+ 
+    
 });
 
