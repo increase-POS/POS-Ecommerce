@@ -277,6 +277,7 @@
     <Compile Include="Models\ItemUnitModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Models\PaginateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -415,6 +416,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Cart\CartView.cshtml" />
+    <Content Include="theme\js\countries.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -75,12 +75,12 @@ namespace PosEcommerce.Models
             return user;
         }
 
-        public async Task<int> SaveCustomer(CustomerModel user)
+        public async Task<int> SaveCustomer(CustomerModel customer)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "PosEcommerce/SaveCustomer";
 
-            var myContent = JsonConvert.SerializeObject(user);
+            var myContent = JsonConvert.SerializeObject(customer);
             parameters.Add("itemObject", myContent);
             return await APIResult.post(method, parameters);
         }

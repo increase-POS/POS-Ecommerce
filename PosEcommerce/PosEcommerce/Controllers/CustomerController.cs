@@ -12,43 +12,67 @@ namespace PosEcommerce.Controllers
 {
     public class CustomerController : Controller
     {
-
-        public async Task<ActionResult> Index(int itemId)
+        [HttpPost]
+        public async Task<ActionResult> saveCustomer(CustomerModel customer)
         {
             try
             {
-             
-                
-                #region sesion
-                SettingController sc = new SettingController();
-                List<SettingModel> settingList = new List<SettingModel>();
-                settingList = await sc.setSetting();
-                if (Session.Count == 0 || Session["currency"].ToString() == null)
+                int id = 0;
+                string res = "";
+                if (Session["customer"]==null)
                 {
-                    Session["settingList"] = settingList;
-                    Session["currency"] = settingList.Where(x => x.settingName == "currency").FirstOrDefault().value;
-                    Session["com_name"] = settingList.Where(x => x.settingName == "com_name").FirstOrDefault().value;
-                    Session["com_email"] = settingList.Where(x => x.settingName == "com_email").FirstOrDefault().value;
-                    Session["com_mobile"] = settingList.Where(x => x.settingName == "com_mobile").FirstOrDefault().value;
-                    Session["com_logo"] = settingList.Where(x => x.settingName == "com_logo").FirstOrDefault().value;
-                    Session["accuracy"] = settingList.Where(x => x.settingName == "accuracy").FirstOrDefault().value;
-                    Global.accuracy = Session["accuracy"].ToString();
-                    Global.currency = Session["currency"].ToString();
-                    Session["lang"] = "en";
-
-                    Global.resourcemanager = new ResourceManager("PosEcommerce.AppResource.ar", Assembly.GetExecutingAssembly());
+                    //add
+                    customer.language = Session["lang"].ToString();
+                    customer.type = "c";
+                    customer.isActive = 1;
+                    id = await customer.SaveCustomer(customer);
                 }
                 else
                 {
-                    //  Session["lang"] = "en";
-                }
-                sc.checkLang(Session["lang"].ToString());
-                ViewBag.path = sc.GetBaseUrl( HttpContext.Request);
-                ViewBag.currentp = "products";
-                #endregion
-               
+                    //EDIT
+                    CustomerModel oldcustomer = Session["customer"] as CustomerModel;
+                     
+                    if (oldcustomer.agentId > 0)
+                    {
+                        customer.agentId = oldcustomer.agentId;
+                        customer.language= Session["lang"].ToString();
+                        
+                        // customer.type = "c";
+                        // customer.isActive = 1;
+                        customer.notes = oldcustomer.notes;
+                        id = await customer.SaveCustomer(customer);
+                    }
 
-                return View();
+                   
+
+                }
+                
+              
+               
+                if (id > 0)
+                {
+                    res = "saved";
+                    customer.agentId = id;
+                    Session["customer"] = customer;
+                }
+                else
+                {
+                    res = "notsaved";
+                }
+             
+
+                JsonResult result = this.Json(new
+                {
+                   msg = res,
+                }, JsonRequestBehavior.AllowGet);
+
+                return result;
+                #region sesion
+             
+                #endregion
+
+
+               
             }
             catch(Exception ex)
             {
@@ -58,7 +82,48 @@ namespace PosEcommerce.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<ActionResult> loginCustomer(CustomerModel customer)
+        {
+            try
+            {
+               // customer.language = Session["lang"].ToString();
+                string res = "";
+                customer = await customer.GetloginCustomer(customer.userName,customer.password);
+                if (customer.agentId > 0)
+                {
 
-        
+                    res = "correct";
+                    //  Session["agentId"] = id;
+                    Session["customer"] = customer;
+                    Session["lang"] = customer.language;
+                }
+                else
+                {
+                    res = "wrong username or password";
+                }
+               
+
+                JsonResult result = this.Json(new
+                {
+                    msg = res,
+                }, JsonRequestBehavior.AllowGet);
+
+                return result;
+                #region sesion
+                
+                #endregion
+
+
+                // return View();
+            }
+            catch (Exception ex)
+            {
+                return View("not found");
+            }
+
+        }
+
+
     }
 }

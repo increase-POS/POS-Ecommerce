@@ -330,7 +330,50 @@ $(document).ready(function () {
          
 
     });
- 
-    
+ //  customer
+    $('#btnSaveCustomer').click(function (e) {
+        e.preventDefault;
+        var customer = $("#customerform").serialize();   
+        alert(customer);
+        $.ajax({
+            url:path +'/Customer/saveCustomer',
+            type: "POST",
+            //contentType: "application/json; charset=utf-8",
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8' ,
+            data: customer ,
+            dataType: 'json',
+            async: true,
+            success: function (result) {
+                alert(result.msg);
+             
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('oops, something bad happened');
+            }
+        });
+    });
+
+    //login
+    $('#btnlogin').click(function (e) {
+        e.preventDefault;
+        var customer = $("#loginForm").serialize();
+        alert(customer);
+        $.ajax({
+            url: path + '/Customer/loginCustomer',
+            type: "POST",
+            //contentType: "application/json; charset=utf-8",
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: customer,
+            dataType: 'json',
+            async: true,
+            success: function (result) {
+                alert(result.msg);
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('oops, something bad happened');
+            }
+        });
+    });
 });
 
