@@ -48,6 +48,8 @@ namespace PosEcommerce.Models
         public Nullable<bool> isShopCustomer { get; set; }
         public Nullable<System.DateTime> createDate { get; set; }
         public Nullable<System.DateTime> updateDate { get; set; }
+        public string countryName { get; set; }
+        public string cityName { get; set; }
         #endregion
 
 

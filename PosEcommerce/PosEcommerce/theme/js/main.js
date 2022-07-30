@@ -375,5 +375,47 @@ $(document).ready(function () {
             }
         });
     });
+
+    //fill countries
+
+    const countries = JSON.parse(allCountries);
+
+   
+    let dropdown = $('#countryName');
+
+    dropdown.empty();
+    let dropdowncity = $('#cityName');
+
+    dropdowncity.empty();
+    dropdown.append('<option selected="true" disabled>Region..</option>');
+    dropdown.prop('selectedIndex', 0);
+
+  
+
+    // Populate dropdown with list of provinces
+ 
+    $.each(countries.data, function (key, entry) {
+        dropdown.append($('<option></option>').attr('value', entry.country).text(entry.country));
+
+    });
+    //fill cities
+    $('#countryName').change(function (e) {
+        dropdowncity.empty();
+        dropdowncity.append('<option selected="true" disabled>City..</option>');
+        dropdowncity.prop('selectedIndex', 0);
+        $.each(countries.data, function (key, entry) {
+            var co = $('#countryName').val();
+            if (entry.country == co) {
+                $.each(entry.cities,
+                    function (key, value) {
+                        dropdowncity.append($('<option></option>').attr('value', value).text(value));
+                });
+            }
+          
+
+        });
+
+    });
+
 });
 
