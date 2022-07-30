@@ -214,13 +214,13 @@ $(document).ready(function () {
 
         // Stop acting like a button
         e.preventDefault();
-      
 
-            $('#total').text("");
-            // Get the field name
+
+        $('#total').text("");
+        // Get the field name
 
         var quantity = parseInt($(this).parent().parent().find('input').val());
-     
+
         if (allnumeric(quantity.toString())) {
             if (isNaN(parseFloat(quantity))) {
                 quantity = 0;
@@ -238,9 +238,9 @@ $(document).ready(function () {
             $(this).parent().parent().find('input').val("0");
             $('#total').text("0");
         }
-        
 
- 
+
+
 
     });
 
@@ -308,56 +308,74 @@ $(document).ready(function () {
         return fnum.toString();
 
     };
-    
+
     $('#quantity').keyup(function (e) {
         // Stop acting like a button
         //e.preventDefault();
         $('#total').text("");
         // Get the field name
         var quantity = parseInt($(this).parent().parent().find('input').val());
-    
+
         // If is not undefined
         if (allnumeric(quantity.toString())) {
             $(this).parent().parent().find('input').val(quantity);
             var price = parseFloat($('#price').text());
-            var res = (price * (parseFloat(quantity) ));
+            var res = (price * (parseFloat(quantity)));
             $('#total').text(accuracyconv(res, accuracy));
-            } else {
-                //
+        } else {
+            //
             $(this).parent().parent().find('input').val("0");
             $('#total').text("0");
-            }
-         
+        }
+
 
     });
- //  customer
+    //  customer
     $('#btnSaveCustomer').click(function (e) {
         e.preventDefault;
-        var customer = $("#customerform").serialize();   
-        alert(customer);
-        $.ajax({
-            url:path +'/Customer/saveCustomer',
-            type: "POST",
-            //contentType: "application/json; charset=utf-8",
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8' ,
-            data: customer ,
-            dataType: 'json',
-            async: true,
-            success: function (result) {
-                alert(result.msg);
-             
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('oops, something bad happened');
+        //validate
+        var req = true;
+
+        $("form#customerform :input").each(function () {
+            var input = $(this); 
+            if (input.prop('required')) {
+   req=req && required(input.val());
             }
+            // This is the jquery object of the input, do what you will
+     
         });
+        //required($("input[name='name']").val())
+        if (req) {
+            var customer = $("#customerform").serialize();
+            //  alert(customer);
+            $.ajax({
+                url: path + '/Customer/saveCustomer',
+                type: "POST",
+                //contentType: "application/json; charset=utf-8",
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: customer,
+                dataType: 'json',
+                async: true,
+                success: function (result) {
+                    alert(result.msg);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert('oops, something bad happened');
+                }
+            });
+        } else {
+            alert("please fill empty fields");
+
+        }
+      
     });
 
     //login
     $('#btnlogin').click(function (e) {
         e.preventDefault;
         var customer = $("#loginForm").serialize();
-        alert(customer);
+    //    alert(customer);
         $.ajax({
             url: path + '/Customer/loginCustomer',
             type: "POST",
@@ -375,30 +393,70 @@ $(document).ready(function () {
             }
         });
     });
+    //logout
+    $('#btnlogout').click(function (e) {
+        e.preventDefault;
+       // var customer = $("#loginForm").serialize();
+        //    alert(customer);
+        $.ajax({
+            url: path + '/Customer/logoutCustomer',
+            type: "POST",
+            //contentType: "application/json; charset=utf-8",
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: "1",
+            dataType: 'json',
+            async: true,
+            success: function (result) {
+                alert(result.msg);
 
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('oops, something bad happened');
+            }
+        });
+    });
     //fill countries
 
     const countries = JSON.parse(allCountries);
 
-   
+
     let dropdown = $('#countryName');
 
     dropdown.empty();
+    dropdown.append('<option  disabled>Region..</option>');
+    dropdown.prop('selectedIndex', 0);
+
+    //city
     let dropdowncity = $('#cityName');
 
     dropdowncity.empty();
-    dropdown.append('<option selected="true" disabled>Region..</option>');
-    dropdown.prop('selectedIndex', 0);
 
-  
+    if (customerCity == null || customerCity == "") {
 
-    // Populate dropdown with list of provinces
- 
+        dropdowncity.append('<option  selected="true" disabled>City..</option>');
+        dropdowncity.prop('selectedIndex', 0);
+    }
     $.each(countries.data, function (key, entry) {
-        dropdown.append($('<option></option>').attr('value', entry.country).text(entry.country));
+        if (customerCountry == entry.country) {
+            dropdown.append($('<option></option>').attr('value', entry.country).attr('selected', "true").text(entry.country));
 
+            if (entry.country == customerCountry) {
+                $.each(entry.cities,
+                    function (key, value) {
+                        if (customerCity != null && customerCity != "") {
+                            if (customerCity == value) {
+                                dropdowncity.append($('<option></option>').attr('value', customerCity).attr('selected', "true").text(customerCity));
+                            } else {
+                                dropdowncity.append($('<option></option>').attr('value', value).text(value));
+                            }
+                        }
+                    });
+            }
+        } else {
+            dropdown.append($('<option></option>').attr('value', entry.country).text(entry.country));
+        }
     });
-    //fill cities
+    //fill cities on change
     $('#countryName').change(function (e) {
         dropdowncity.empty();
         dropdowncity.append('<option selected="true" disabled>City..</option>');
@@ -409,10 +467,8 @@ $(document).ready(function () {
                 $.each(entry.cities,
                     function (key, value) {
                         dropdowncity.append($('<option></option>').attr('value', value).text(value));
-                });
+                    });
             }
-          
-
         });
 
     });

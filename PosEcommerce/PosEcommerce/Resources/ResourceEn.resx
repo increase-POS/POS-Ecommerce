@@ -378,4 +378,10 @@
   <data name="ZeroQuantityAlert" xml:space="preserve">
     <value>Quantity can't be zero</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
 </root>

@@ -378,4 +378,10 @@
   <data name="ZeroQuantityAlert" xml:space="preserve">
     <value>الكمية لا يمكن أن تكون صفر</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>الملف الشخصي</value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>إنشاء حساب</value>
+  </data>
 </root>

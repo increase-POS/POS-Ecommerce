@@ -601,6 +601,15 @@ namespace PosEcommerce.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        internal static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchases.
         /// </summary>
         internal static string Purchases {
@@ -732,6 +741,15 @@ namespace PosEcommerce.Resources {
         internal static string ShoppingCart {
             get {
                 return ResourceManager.GetString("ShoppingCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign up.
+        /// </summary>
+        internal static string Signup {
+            get {
+                return ResourceManager.GetString("Signup", resourceCulture);
             }
         }
         

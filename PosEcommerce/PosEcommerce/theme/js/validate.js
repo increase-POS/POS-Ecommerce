@@ -1,5 +1,3 @@
-
-
 function allnumeric(inputtxt) {
     const regex = /^[0-9]+$/;
     const found = inputtxt.match(regex);
@@ -43,7 +41,7 @@ function stringlength(inputtxt, minlength, maxlength) {
 }
 function required(inputtxt) {
 
-    var empt = inputtxt.value;
+    var empt = inputtxt;
     if (empt == "") {
         //alert("Please input a Value");
         return false;
@@ -53,4 +51,3 @@ function required(inputtxt) {
         return true;
     }
 }
- 
