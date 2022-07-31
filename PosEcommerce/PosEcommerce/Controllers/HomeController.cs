@@ -7,7 +7,8 @@ using PosEcommerce.Models;
 using System.Threading.Tasks;
 using System.Resources;
 using System.Reflection;
-
+using Newtonsoft.Json;
+ 
 namespace PosEcommerce.Controllers
 {
     public class HomeController : Controller
@@ -24,10 +25,12 @@ namespace PosEcommerce.Controllers
 
             SettingController sc = new SettingController();
             List<SettingModel> settingList = new List<SettingModel>();
-            settingList = await sc.setSetting();
+            CountryModel defaulcountry = new CountryModel();
+        
             ViewBag.path = sc.GetBaseUrl(HttpContext.Request);
             if (Session.Count == 0 || Session["currency"].ToString() == null)
             {
+                settingList = await sc.setSetting();
                 Session["settingList"] = settingList;
                 Session["currency"] = settingList.Where(x => x.settingName == "currency").FirstOrDefault().value;
                 Session["com_name"] = settingList.Where(x => x.settingName == "com_name").FirstOrDefault().value;
@@ -37,9 +40,15 @@ namespace PosEcommerce.Controllers
                 Session["accuracy"] = settingList.Where(x => x.settingName == "accuracy").FirstOrDefault().value;
                 Global.accuracy = Session["accuracy"].ToString();
                 Global.currency = Session["currency"].ToString();
+
               Session["lang"] = "en";
-               
-                
+                //  CountryModel defaulcountry = new CountryModel();
+                defaulcountry= await defaulcountry.GetDefaultCountry();
+                //    Session["defaultCountry"] = JsonConvert.SerializeObject(defaulcountry);
+                Session["defaultCountry"] =defaulcountry;
+                //   string  co = JsonConvert.ser(defaulcountry);
+                //{ json : "@Html.Raw(JsonConvert.SerializeObject(Model))" };
+
             }
             else
             {
@@ -60,10 +69,12 @@ namespace PosEcommerce.Controllers
 
             SettingController sc = new SettingController();
             List<SettingModel> settingList = new List<SettingModel>();
-            settingList = await sc.setSetting();
+            CountryModel defaulcountry = new CountryModel();
+         
             ViewBag.path = sc.GetBaseUrl(HttpContext.Request);
             if (Session.Count == 0 || Session["currency"].ToString() == null)
             {
+                settingList = await sc.setSetting();
                 Session["settingList"] = settingList;
                 Session["currency"] = settingList.Where(x => x.settingName == "currency").FirstOrDefault().value;
                 Session["com_name"] = settingList.Where(x => x.settingName == "com_name").FirstOrDefault().value;
@@ -74,7 +85,8 @@ namespace PosEcommerce.Controllers
                 Global.accuracy = Session["accuracy"].ToString();
                 Global.currency = Session["currency"].ToString();
                 Session["lang"] = "en";
-
+                //  CountryModel defaulcountry = new CountryModel();
+                Session["defaultCountry"] = await defaulcountry.GetDefaultCountry();
 
             }
             else
@@ -92,10 +104,12 @@ namespace PosEcommerce.Controllers
 
             SettingController sc = new SettingController();
             List<SettingModel> settingList = new List<SettingModel>();
-            settingList = await sc.setSetting();
+            CountryModel defaulcountry = new CountryModel();
+           
             ViewBag.path = sc.GetBaseUrl(HttpContext.Request);
             if (Session.Count == 0 || Session["currency"].ToString() == null)
             {
+                settingList = await sc.setSetting();
                 Session["settingList"] = settingList;
                 Session["currency"] = settingList.Where(x => x.settingName == "currency").FirstOrDefault().value;
                 Session["com_name"] = settingList.Where(x => x.settingName == "com_name").FirstOrDefault().value;
@@ -106,7 +120,8 @@ namespace PosEcommerce.Controllers
                 Global.accuracy = Session["accuracy"].ToString();
                 Global.currency = Session["currency"].ToString();
                 Session["lang"] = "en";
-
+                //  CountryModel defaulcountry = new CountryModel();
+                Session["defaultCountry"] = await defaulcountry.GetDefaultCountry();
 
             }
             else

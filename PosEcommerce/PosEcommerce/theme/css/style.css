@@ -456,6 +456,50 @@ footer .copyright {
 .login-menu .cart-items .no-item p {
   margin: 10px auto;
 }
+
+.login-menu .img-circle {
+  width: 150px;
+  border: 1px solid #77c3fa;
+  border-radius: 50%;
+}
+
+.login-menu h4 {
+  font-size: 16px;
+}
+
+.login-menu .nlist {
+  padding-left: 0 !important;
+  margin-top: 30px;
+}
+
+.login-menu .nlist a {
+  display: block;
+  padding: 10px;
+  font-weight: bold;
+  color:#1ba8e5;
+  fill: #1ba8e5;
+}
+    .login-menu .nlist .form-group {
+        padding: 10px;
+    }
+.login-menu .nlist a:hover {
+  color: #0f82b3;
+  fill: #0f82b3;
+}
+
+.login-menu .nlist a i {
+  padding-right: 20px;
+}
+
+.login-menu .nlist a svg {
+  padding-right: 20px;
+  height: 25px;
+}
+
+.login-menu .nlist a:hover, .login-menu .nlist a.active {
+  color: #0f82b3;
+  fill: #0f82b3;
+}
 /* End Login menu */
 
 /* Start Product View Section */
@@ -712,6 +756,16 @@ footer .copyright {
 }
 
 /* End Products Section */
+
+/* Start 404 Error Page */
+.message-block h1 {
+  font-size: 160px;
+}
+
+.message-block p {
+  font-size: 12px;
+}
+/* End 404 Error Page */
 
 .list-group-item.active {
   background-color: #222222;

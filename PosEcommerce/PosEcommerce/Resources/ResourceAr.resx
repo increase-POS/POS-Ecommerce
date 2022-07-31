@@ -384,4 +384,7 @@
   <data name="Signup" xml:space="preserve">
     <value>إنشاء حساب</value>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>مرحبا بك</value>
+  </data>
 </root>

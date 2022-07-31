@@ -22,9 +22,11 @@ namespace PosEcommerce.Controllers
                 #region sesion
                 SettingController sc = new SettingController();
                 List<SettingModel> settingList = new List<SettingModel>();
-                settingList = await sc.setSetting();
+                CountryModel defaulcountry = new CountryModel();
+               
                 if (Session.Count == 0 || Session["currency"].ToString() == null)
                 {
+                    settingList = await sc.setSetting();
                     Session["settingList"] = settingList;
                     Session["currency"] = settingList.Where(x => x.settingName == "currency").FirstOrDefault().value;
                     Session["com_name"] = settingList.Where(x => x.settingName == "com_name").FirstOrDefault().value;
@@ -35,7 +37,8 @@ namespace PosEcommerce.Controllers
                     Global.accuracy = Session["accuracy"].ToString();
                     Global.currency = Session["currency"].ToString();
                     Session["lang"] = "en";
-
+                    //  CountryModel defaulcountry = new CountryModel();
+                    Session["defaultCountry"] = await defaulcountry.GetDefaultCountry();
                     Global.resourcemanager = new ResourceManager("PosEcommerce.AppResource.ar", Assembly.GetExecutingAssembly());
                 }
                 else

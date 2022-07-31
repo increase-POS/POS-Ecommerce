@@ -14,6 +14,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 namespace PosEcommerce.Models
 {
+    public class cityModel
+    {
+        public int cityId { get; set; }
+        public string cityCode { get; set; }
+        public Nullable<int> countryId { get; set; }
+    }
     public class CountryModel
     {
 
@@ -24,27 +30,28 @@ namespace PosEcommerce.Models
         public string name { get; set; }
         public byte isDefault { get; set; }
         public int currencyId { get; set; }
-
+        public List<cityModel> citiesList { get; set; }
 
         #endregion
 
         #region methods
-        public async Task<List<CountryModel>> getCountries()
+        public async Task<CountryModel> GetDefaultCountry()
         {
 
-            List<CountryModel> list = new List<CountryModel>();
+            CountryModel item = new CountryModel();
          
             //#################
-            IEnumerable<Claim> claims = await APIResult.getList("PosEcommerce/getCountries");
+            IEnumerable<Claim> claims = await APIResult.getList("PosEcommerce/GetDefaultCountry");
 
             foreach (Claim c in claims)
             {
                 if (c.Type == "scopes")
                 {
-                    list.Add(JsonConvert.DeserializeObject<CountryModel>(c.Value, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy" }));
-                }
+                    item = JsonConvert.DeserializeObject<CountryModel>(c.Value, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy" });
+                    break;
+                        }
             }
-            return list;
+            return item;
 
         
         }

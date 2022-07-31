@@ -385,8 +385,8 @@ $(document).ready(function () {
             dataType: 'json',
             async: true,
             success: function (result) {
-                alert(result.msg);
-
+              //  alert(result.msg);
+                window.location.href = path + '/Home/Index';
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert('oops, something bad happened');
@@ -406,10 +406,13 @@ $(document).ready(function () {
             data: "1",
             dataType: 'json',
             async: true,
-            success: function (result) {
-                alert(result.msg);
-
-            },
+            success:
+                function (result) {
+              //  alert(result.msg);
+                    window.location.href = path + '/Home/Index';
+                
+                }
+            ,
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert('oops, something bad happened');
             }

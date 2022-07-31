@@ -124,6 +124,34 @@ namespace PosEcommerce.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<ActionResult> logoutCustomer()
+        {
+            try
+            {
+                Session.Remove("customer"); 
+             
+
+                JsonResult result = this.Json(new
+                {
+                    msg = "done",
+                }, JsonRequestBehavior.AllowGet);
+
+                  return result;
+               // return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                JsonResult result = this.Json(new
+                {
+                    msg = "fail",
+                }, JsonRequestBehavior.AllowGet);
+
+                return result;
+                // return RedirectToAction("Index", "Home");
+            }
+
+        }
 
     }
 }
